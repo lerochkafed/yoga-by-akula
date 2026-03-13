@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga by Akula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые сбросы */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f9ff;
+            color: #2c3e4e;
+            line-height: 1.5;
+            font-weight: 350;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ФИКСИРОВАННЫЕ РАЗМЕРЫ ДЛЯ КОМПЬЮТЕРА */
+        h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            color: #2c3e4e;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+            color: #2c3e4e;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            color: #2c3e4e;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: #4d7a9c;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            font-weight: 350;
+            line-height: 1.6;
+        }
+
+        /* Кнопки */
+        .button {
+            display: inline-block;
+            background-color: #4d7a9c;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 450;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .button:hover {
+            background-color: #3a5e7a;
+        }
+
+        /* Сетка */
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+        /* Карточки */
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 1rem 0;
+            color: #2c3e4e;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+            border-radius: 30px;
+            margin: 2rem 0;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(77, 122, 156, 0.3);
+        }
+
+        /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (экраны меньше 768px) ========== */
+        @media (max-width: 768px) {
+            /* Фиксированные размеры для мобильных */
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            h3 {
+                font-size: 1.4rem !important;
+            }
+            
+            p {
+                font-size: 1rem !important;
+            }
+            
+            /* Сетки в одну колонку */
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Убираем гриды везде */
+            [style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Отступы меньше */
+            section {
+                padding: 3rem 0 !important;
+            }
+            
+            /* Кнопки на всю ширину */
+            .button, [class*="button"] {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            /* Фото в герое */
+            .hero-photo {
+                margin-top: 2rem !important;
+            }
+            
+            /* Сертификаты по левому краю */
+            .certs-grid {
+                justify-content: flex-start !important;
+            }
+            .certs-grid [style*="text-align: right"] {
+                text-align: left !important;
+            }
+            
+            /* Цены */
+            .price-flex {
+                gap: 1.5rem !important;
+            }
+            
+            /* Соцсети */
+            .social-icons {
+                gap: 2rem !important;
+            }
+            .social-icons svg {
+                width: 32px !important;
+                height: 32px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ГЕРОЙ - ПЕРВЫЙ ЭКРАН -->
+    <section style="padding: 2rem 0 4rem 0;">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            <!-- ЛЕВАЯ КОЛОНКА - ТЕКСТ -->
+            <div>
+                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: #4d7a9c; margin-bottom: 1.5rem; font-weight: 350;">
+                    yoga by akula
+                </p>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h1 style="font-size: 4rem; font-weight: 350; line-height: 1.1; color: #2c3e4e; margin-bottom: 0.3rem;">
+                        Йога клуб,
+                    </h1>
+                    
+                    <h1 style="font-size: 4rem; font-weight: 350; line-height: 1.1; color: #2c3e4e; margin-bottom: 0.3rem; border-bottom: 1px solid rgba(77,122,156,0.15); padding-bottom: 0.3rem; display: inline-block;">
+                        индивидуальная практика
+                    </h1>
+                </div>
+                
+                <p style="font-size: 1.8rem; font-weight: 320; line-height: 1.3; color: #4d7a9c; margin: 1.2rem 0 2rem 0; max-width: 500px;">
+                    для баланса, роста и регулярности
+                </p>
+                
+                <a href="https://t.me/akula_yogabot" target="_blank" class="button" style="display: inline-flex; align-items: center; gap: 0.8rem; background-color: transparent; color: #4d7a9c; padding: 14px 32px; border: 1.5px solid #4d7a9c; border-radius: 50px; font-weight: 400; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; width: auto;"
+                   onmouseover="this.style.backgroundColor='#4d7a9c'; this.style.color='white'; this.style.borderColor='#4d7a9c';"
+                   onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4d7a9c'; this.style.borderColor='#4d7a9c';">
+                    <span>Вступить в клуб</span>
+                    <span style="font-size: 1.2rem;">→</span>
+                </a>
+            </div>
+            
+            <!-- ПРАВАЯ КОЛОНКА - ФОТО -->
+            <div class="hero-photo" style="border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px rgba(77,122,156,0.2);">
+                <img src="images/hero-yoga.jpg" alt="yoga" style="width: 100%; height: auto; display: block; aspect-ratio: 4/5; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок с фоновым фото -->
+    <section style="position: relative; padding: 8rem 0; margin: 4rem 0; background-image: url('images/atmosphere-2.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(77, 122, 156, 0.3);"></div>
+        <div style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; width: 100%;">
+            <div style="max-width: 900px; width: 90%; margin: 0 auto; text-align: center;">
+                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 1rem; margin: 0 auto 1.5rem auto; color: white; font-weight: 500;">ПРИСОЕДИНЯЙСЯ</p>
+                <h2 style="font-size: 5rem; font-weight: 500; line-height: 1.1; margin: 0 auto 2rem auto; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Telegram-клуб</h2>
+                <p style="font-size: 1.4rem; line-height: 1.5; max-width: 700px; margin: 0 auto 2rem auto; color: white; font-weight: 350; text-shadow: 0 1px 5px rgba(0,0,0,0.2);">Пространство, где тело становится сильным, а ум спокойным</p>
+                <p style="font-size: 1.2rem; line-height: 1.7; max-width: 600px; margin: 0 auto 1rem auto; color: white; font-weight: 300; text-shadow: 0 1px 5px rgba(0,0,0,0.2);">Я создала этот клуб, чтобы каждый мог практиковать йогу из заботы о себе. Здесь нет гонки за идеальными асанами — только уважительное отношение к телу и мягкая работа над силой, гибкостью и внутренней опорой.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Что ждет в клубе (сетка 2x2) -->
+    <section>
+        <div class="container">
+            <h2 style="text-align: center;">Что тебя ждёт в клубе?</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem;">
+                <!-- Карточка 1 -->
+                <div class="card" style="padding: 0; overflow: hidden; text-align: center;">
+                    <img src="images/online-practice.jpg" alt="онлайн практики" style="width: 100%; height: 280px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; line-height: 1.3;">Онлайн практики<br>в прямом эфире</h3>
+                        <p style="font-size: 1.1rem;">Один раз в неделю мы встречаемся в Google meet чтобы двигаться, дышать и практиковать вместе. Здесь Вы можете получить обратную связь сразу, исправить ошибки и углубить свою практику. Эти занятия подойдут и новичкам и продолжающим!</p>
+                    </div>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="card" style="padding: 0; overflow: hidden; text-align: center;">
+                    <img src="images/record-practice.jpg" alt="записи практик" style="width: 100%; height: 280px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; line-height: 1.3;">Записи практик<br>от 15 мин до 1,5 часов</h3>
+                        <p style="font-size: 1.1rem;">Всё собрано в удобном формате и в одном месте — закрытый Telegram–канал: занимаешься в любое удобное время – 15 минут утром, 40 минут вечером или полноценная практика в выходной.</p>
+                    </div>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="card" style="padding: 0; overflow: hidden; text-align: center;">
+                    <img src="images/mini-courses.jpg" alt="мини-курсы" style="width: 100%; height: 280px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; line-height: 1.3;">Мини–курсы для<br>глубокой работы</h3>
+                        <p style="font-size: 1.1rem;">С определенным запросом:</p>
+                        <ul style="font-size: 1.1rem; list-style-type: none; padding-left: 0; display: inline-block; text-align: left;">
+                            <li style="margin-bottom: 0.3rem;">• йога для здоровой спины</li>
+                            <li style="margin-bottom: 0.3rem;">• красивый живот</li>
+                            <li style="margin-bottom: 0.3rem;">• практики от тревожности</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="card" style="padding: 0; overflow: hidden; text-align: center;">
+                    <img src="images/asana-analysis.jpg" alt="разбор асан" style="width: 100%; height: 280px; object-fit: cover;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400;">Разбор асан</h3>
+                        <p style="font-size: 1.1rem;">Каждую неделю – разбор группы асан, где я объясняю и показываю, как правильно отстроить форму, о противопоказаниях и травмобезопасности – чтобы сделать твою практику еще более эффективной и безопасной!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Тариф 1: Telegram-клуб -->
+    <section style="padding: 5rem 0; background-color: #eef4fa;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- Текст слева -->
+                <div>
+                    <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">тариф 1</p>
+                    <h2 style="font-size: 3.5rem; font-weight: 350; margin-bottom: 1.5rem;">Подписка на закрытый<br>Telegram-канал</h2>
+                    <p style="font-size: 1.2rem; color: #4d7a9c; margin-bottom: 2rem;">с практиками и прямыми эфирами.</p>
+                    
+                    <div style="display: flex; gap: 3rem; margin-bottom: 2rem;">
+                        <div>
+                            <div style="font-size: 1rem; color: #7a9bb9;">2 недели</div>
+                            <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">1500₽</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1rem; color: #7a9bb9;">1 месяц</div>
+                            <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">2500₽</div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 0.9rem; color: #a0b8cc; margin-bottom: 2rem;">*доступ через Telegram-бот</p>
+                    
+                    <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; max-width: 450px;">
+                        Это не просто йога клуб — это сообщество единомышленников с общением и поддержкой!
+                    </p>
+                    
+                    <a href="https://t.me/akula_yogabot" target="_blank" 
+                       class="button" 
+                       style="display: inline-flex; align-items: center; gap: 0.8rem; background-color: transparent; color: #4d7a9c; padding: 14px 32px; border: 1.5px solid #4d7a9c; border-radius: 50px; font-weight: 400; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; width: auto;"
+                       onmouseover="this.style.backgroundColor='#4d7a9c'; this.style.color='white'; this.style.borderColor='#4d7a9c';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4d7a9c'; this.style.borderColor='#4d7a9c';">
+                        <span>Вступить в клуб</span>
+                        <span style="font-size: 1.2rem;">→</span>
+                    </a>
+                </div>
+                
+                <!-- Фото справа -->
+                <div style="border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(77,122,156,0.15);">
+                    <img src="images/telegram-club.jpg" alt="Telegram клуб" style="width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тариф 2: Персональные занятия -->
+    <section style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- Фото слева -->
+                <div style="border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(77,122,156,0.15);">
+                    <img src="images/personal-practice.jpg" alt="Персональные занятия" style="width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover;">
+                </div>
+                
+                <!-- Текст справа -->
+                <div>
+                    <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">тариф 2</p>
+                    <h2 style="font-size: 3.5rem; font-weight: 350; line-height: 1.2; margin-bottom: 1.5rem;">Йога:<br>Персональные занятия</h2>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <div style="font-size: 1rem; color: #7a9bb9; margin-bottom: 0.2rem;">Разовое занятие</div>
+                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e; margin-bottom: 1.5rem;">3000₽</div>
+                        
+                        <p style="font-size: 1.1rem; font-weight: 500; color: #4d7a9c; margin-bottom: 1rem;">Абонементы на месяц:</p>
+                        <div style="display: flex; gap: 3rem; margin-bottom: 2rem;">
+                            <div>
+                                <div style="font-size: 1rem; color: #7a9bb9;">4 практики</div>
+                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">9600₽</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1rem; color: #7a9bb9;">8 практик</div>
+                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">16800₽</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; line-height: 1.6;">
+                        Индивидуальный подход, выстраиваем личную практику под твой уровень и цели, в удобное для тебя время.
+                    </p>
+                    
+                    <a href="https://t.me/akula_lol" target="_blank" 
+                       class="button" 
+                       style="display: inline-flex; align-items: center; gap: 0.8rem; background-color: transparent; color: #4d7a9c; padding: 14px 32px; border: 1.5px solid #4d7a9c; border-radius: 50px; font-weight: 400; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; margin-top: 1rem; width: auto;"
+                       onmouseover="this.style.backgroundColor='#4d7a9c'; this.style.color='white'; this.style.borderColor='#4d7a9c';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4d7a9c'; this.style.borderColor='#4d7a9c';">
+                        <span>Записаться на индивидуальное</span>
+                        <span style="font-size: 1.2rem;">→</span>
+                    </a>
+                    
+                    <p style="font-size: 0.8rem; color: #a0b8cc; margin-top: 1rem;">
+                        *напиши мне в личные сообщения, договоримся о времени
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тариф 3: Йога + Питание -->
+    <section style="padding: 5rem 0; background-color: #eef4fa;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- Текст слева -->
+                <div>
+                    <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">тариф 3</p>
+                    <h2 style="font-size: 3.5rem; font-weight: 350; margin-bottom: 1.5rem;">Йога + Ведение по питанию</h2>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">24 000₽</div>
+                        <p style="font-size: 1.1rem; color: #4d7a9c;">месяц</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ 8 практик</p>
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Анализ твоей конституции</p>
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Рекомендации по питанию и режиму</p>
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; line-height: 1.6;">
+                        Для тех, кто готов работать комплексно и серьезно подойти к изменению жизни, тела и отношения к внешнему.
+                    </p>
+                    
+                    <a href="https://t.me/akula_lol" target="_blank" 
+                       class="button" 
+                       style="display: inline-flex; align-items: center; gap: 0.8rem; background-color: transparent; color: #4d7a9c; padding: 14px 32px; border: 1.5px solid #4d7a9c; border-radius: 50px; font-weight: 400; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; width: auto;"
+                       onmouseover="this.style.backgroundColor='#4d7a9c'; this.style.color='white'; this.style.borderColor='#4d7a9c';"
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4d7a9c'; this.style.borderColor='#4d7a9c';">
+                        <span>Выбрать тариф</span>
+                        <span style="font-size: 1.2rem;">→</span>
+                    </a>
+                    
+                    <p style="font-size: 0.8rem; color: #a0b8cc; margin-top: 1rem;">
+                        *напиши мне, и мы подберем индивидуальный план
+                    </p>
+                </div>
+                
+                <!-- Фото справа -->
+                <div style="border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(77,122,156,0.15);">
+                    <img src="images/nutrition-yoga.jpg" alt="Йога и питание" style="width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧТО ГОВОРЯТ МОИ УЧЕНИКИ -->
+    <section style="padding: 6rem 0; background-color: #f5f9ff;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 4rem; font-weight: 350; font-size: 2.2rem; color: #2c3e4e;">
+                Что говорят мои ученики:
+            </h2>
+            
+            <div style="position: relative; max-width: 800px; margin: 0 auto;">
+                <div id="reviewsCarousel" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 2rem; padding: 1rem 0 3rem 0; scrollbar-width: thin; scrollbar-color: #4d7a9c #e0e0e0;">
+                    <!-- Отзыв 1 -->
+                    <div style="flex: 0 0 100%; scroll-snap-align: start;">
+                        <div style="background: white; border-radius: 30px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(77,122,156,0.08);">
+                            <p style="font-size: 1.3rem; line-height: 1.7; color: #2c3e4e; font-weight: 320; margin-bottom: 2rem;">
+                                "Я за три месяца занятий йогой с тобой заметила как у меня всё тело выровнялось 😂 я просто в шоке. У меня лордоз был очень проявленный, а сейчас прям ровный силуэт полностью."
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="width: 40px; height: 2px; background-color: #4d7a9c; opacity: 0.2;"></span>
+                                <span style="font-size: 0.9rem; color: #4d7a9c; letter-spacing: 1px;">telegram-клуб</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 2 -->
+                    <div style="flex: 0 0 100%; scroll-snap-align: start;">
+                        <div style="background: white; border-radius: 30px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(77,122,156,0.08);">
+                            <p style="font-size: 1.3rem; line-height: 1.7; color: #2c3e4e; font-weight: 320; margin-bottom: 2rem;">
+                                "Спасибо за занятие Лера!)) Мне безумно нравится как ты преподаёшь йогу 💗 готова заниматься с тобой всегда ))"
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="width: 40px; height: 2px; background-color: #4d7a9c; opacity: 0.2;"></span>
+                                <span style="font-size: 0.9rem; color: #4d7a9c; letter-spacing: 1px;">индивидуальные</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 3 -->
+                    <div style="flex: 0 0 100%; scroll-snap-align: start;">
+                        <div style="background: white; border-radius: 30px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(77,122,156,0.08);">
+                            <p style="font-size: 1.3rem; line-height: 1.7; color: #2c3e4e; font-weight: 320; margin-bottom: 2rem;">
+                                "Я очень долго настраивалась, в один прекрасный день поняла что хочу на йогу и прикол в том что именно к тебе, в городе много студий, а мне акулу пожалуйста 🥰"
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="width: 40px; height: 2px; background-color: #4d7a9c; opacity: 0.2;"></span>
+                                <span style="font-size: 0.9rem; color: #4d7a9c; letter-spacing: 1px;">онлайн-практики</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 0.9rem; color: #a0b8cc; margin-top: 2rem;">
+                    листайте →
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-weight: 350; font-size: 2.2rem; color: #2c3e4e;">
+                Обо мне:
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: start;">
+                <!-- ЛЕВАЯ КОЛОНКА -->
+                <div>
+                    <div style="position: relative; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(77,122,156,0.15); aspect-ratio: 3/4; max-width: 360px; margin-left: auto; margin-top: -20px; margin-bottom: 1.5rem;">
+                        <img src="images/lera-photo.jpg" alt="Валерия Акуленко" style="width: 100%; height: 100%; display: block; object-fit: cover;">
+                    </div>
+                    
+                    <div style="max-width: 360px; margin-left: auto;">
+                        <p style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #4d7a9c; margin-bottom: 1rem; text-align: right;">
+                            образование
+                        </p>
+                        
+                        <div class="certs-grid" style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-end;">
+                            <div style="width: 80px; height: 105px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(77,122,156,0.1);"
+                                 onmouseover="this.style.transform='translateY(-5px)'" 
+                                 onmouseout="this.style.transform='translateY(0)'"
+                                 onclick="window.open('images/diplom-1.jpg', '_blank')">
+                                <img src="images/diplom-1.jpg" alt="Диплом" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="width: 80px; height: 105px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(77,122,156,0.1);"
+                                 onmouseover="this.style.transform='translateY(-5px)'" 
+                                 onmouseout="this.style.transform='translateY(0)'"
+                                 onclick="window.open('images/diplom-2.jpg', '_blank')">
+                                <img src="images/diplom-2.jpg" alt="Диплом" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="width: 80px; height: 105px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(77,122,156,0.1);"
+                                 onmouseover="this.style.transform='translateY(-5px)'" 
+                                 onmouseout="this.style.transform='translateY(0)'"
+                                 onclick="window.open('images/diplom-3.jpg', '_blank')">
+                                <img src="images/diplom-3.jpg" alt="Диплом" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div style="width: 80px; height: 105px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(77,122,156,0.1);"
+                                 onmouseover="this.style.transform='translateY(-5px)'" 
+                                 onmouseout="this.style.transform='translateY(0)'"
+                                 onclick="window.open('images/diplom-4.jpg', '_blank')">
+                                <img src="images/diplom-4.jpg" alt="Диплом" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        
+                        <p style="font-size: 0.7rem; color: #a0b8cc; margin-top: 0.8rem; text-align: right; opacity: 0.7;">
+                            нажмите, чтобы увидеть полностью
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- ПРАВАЯ КОЛОНКА -->
+                <div>
+                    <div style="margin-bottom: 2rem;">
+                        <p style="font-size: 1.2rem; line-height: 1.7; color: #2c3e4e; font-weight: 330; margin-bottom: 1.5rem;">
+                            Я уже более трех лет практикую и преподаю йогу. Мой путь начался с личного запроса — восстановиться, исцелить боли в теле и услышать себя.
+                        </p>
+                        <p style="font-size: 1.2rem; line-height: 1.7; color: #2c3e4e; font-weight: 330; margin-bottom: 1.5rem;">
+                            Я обучалась на тичерс-курсе с нуля, прошла путь от ученицы к преподавателю и начала делиться этой практикой с другими.
+                        </p>
+                    </div>
+                    
+                    <div style="padding-left: 1rem; border-left: 2px solid rgba(77,122,156,0.2);">
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: #4d7a9c; font-weight: 320; font-style: italic;">
+                            Я тоже когда-то прошла все круги ада от ненависти к себе, рпп, проблем с телом и душевных терзаний. Поэтому я здесь, чтобы поддержать тебя на этом пути.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФИНАЛЬНЫЙ БЛОК -->
+    <section style="padding: 0; margin: 0;">
+        <div style="width: 100%; height: 50vh; min-height: 400px; background-image: url('images/final-yoga.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative; display: flex; align-items: center; justify-content: center;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(77, 122, 156, 0.1);"></div>
+            
+            <div class="social-icons" style="position: relative; z-index: 2; display: flex; gap: 4rem; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                <a href="https://t.me/akula_lol" target="_blank" 
+                   style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; color: white; text-decoration: none; transition: transform 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.2);"
+                   onmouseover="this.style.transform='translateY(-5px)'" 
+                   onmouseout="this.style.transform='translateY(0)'">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.665 3.717L2.934 10.554c-1.267.48-1.255 1.215-.23 1.525l4.566 1.42 10.54-6.65c.524-.32 1.002-.148.61.202l-8.54 7.707-.33 4.83c.48 0 .685-.22.95-.48l2.27-2.2 4.72 3.48c.87.48 1.49.23 1.71-.8l3.09-14.56c.32-1.27-.48-1.85-1.31-1.47z" fill="white"/>
+                    </svg>
+                    <span style="font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 350;">telegram</span>
+                </a>
+                
+                <a href="https://www.instagram.com/akula_lol" target="_blank" 
+                   style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; color: white; text-decoration: none; transition: transform 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.2);"
+                   onmouseover="this.style.transform='translateY(-5px)'" 
+                   onmouseout="this.style.transform='translateY(0)'">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.28-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z" fill="white"/>
+                    </svg>
+                    <span style="font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 350;">instagram</span>
+                </a>
+                
+                <a href="https://youtube.com/@yogabyakulaa" target="_blank" 
+                   style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; color: white; text-decoration: none; transition: transform 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.2);"
+                   onmouseover="this.style.transform='translateY(-5px)'" 
+                   onmouseout="this.style.transform='translateY(0)'">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/>
+                    </svg>
+                    <span style="font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 350;">youtube</span>
+                </a>
+            </div>
+        </div>
+        
+        <div style="width: 100%; text-align: center; padding: 1.5rem 0; background-color: white;">
+            <p style="font-size: 0.7rem; color: #a0b8cc; letter-spacing: 0.5px; margin: 0;">
+                © yoga by akula 2026
+            </p>
+        </div>
+    </section>
+</body>
+</html>
