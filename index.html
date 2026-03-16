@@ -232,6 +232,64 @@
     section:first-of-type .container {
         grid-template-columns: 1fr !important;
     }
+    /* ===== ТАРИФ 1 ===== */
+    /* Уменьшаем фото */
+    section:nth-of-type(4) img {  /* Тариф 1 */
+        max-height: 250px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 24px !important;
+    }
+    
+    /* ===== ТАРИФ 2 ===== */
+    /* Меняем порядок: сначала текст, потом фото */
+    section:nth-of-type(5) .container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Текст — первым */
+    section:nth-of-type(5) .container > div:last-child {
+        order: 1 !important;
+    }
+    
+    /* Фото — вторым */
+    section:nth-of-type(5) .container > div:first-child {
+        order: 2 !important;
+        margin-top: 2rem !important;
+    }
+    
+    /* Уменьшаем фото во втором тарифе */
+    section:nth-of-type(5) img {
+        max-height: 250px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 24px !important;
+    }
+    
+    /* ===== ТАРИФ 3 ===== */
+    /* Уменьшаем фото */
+    section:nth-of-type(6) img {
+        max-height: 250px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 24px !important;
+    }
+    
+    /* Для всех тарифов убираем грид и делаем отступы */
+    section:nth-of-type(4) .container,
+    section:nth-of-type(5) .container,
+    section:nth-of-type(6) .container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Выравниваем текст в тарифах */
+    section:nth-of-type(4) [style*="display: grid"],
+    section:nth-of-type(5) [style*="display: grid"],
+    section:nth-of-type(6) [style*="display: grid"] {
+        display: block !important;
+    }
 }
     
     /* Немного уменьшаем заголовок на телефоне */
