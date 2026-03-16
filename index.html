@@ -232,9 +232,38 @@
     section:first-of-type .container {
         grid-template-columns: 1fr !important;
     }
+    /* ===== ВСЕ ТАРИФЫ ===== */
+    /* Общие настройки для контейнеров тарифов */
+    section:nth-of-type(4) .container,
+    section:nth-of-type(5) .container,
+    section:nth-of-type(6) .container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Убираем грид */
+    section:nth-of-type(4) [style*="display: grid"],
+    section:nth-of-type(5) [style*="display: grid"],
+    section:nth-of-type(6) [style*="display: grid"] {
+        display: block !important;
+    }
+    
     /* ===== ТАРИФ 1 ===== */
-    /* Уменьшаем фото */
-    section:nth-of-type(4) img {  /* Тариф 1 */
+    /* Текст */
+    section:nth-of-type(4) .container > div:first-child {
+        order: 1 !important;
+    }
+    
+    /* Фото — добавляем отступ снизу, чтобы не прилипало к кнопке */
+    section:nth-of-type(4) .container > div:last-child {
+        order: 2 !important;
+        margin-top: 1rem !important;
+        margin-bottom: 2rem !important;  /* этот отступ отодвинет фото от следующего блока */
+    }
+    
+    /* Само фото */
+    section:nth-of-type(4) img {
         max-height: 250px !important;
         width: 100% !important;
         object-fit: cover !important;
@@ -243,23 +272,17 @@
     
     /* ===== ТАРИФ 2 ===== */
     /* Меняем порядок: сначала текст, потом фото */
-    section:nth-of-type(5) .container {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    /* Текст — первым */
     section:nth-of-type(5) .container > div:last-child {
-        order: 1 !important;
+        order: 1 !important;  /* текст */
     }
     
-    /* Фото — вторым */
     section:nth-of-type(5) .container > div:first-child {
-        order: 2 !important;
-        margin-top: 2rem !important;
+        order: 2 !important;  /* фото */
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
     }
     
-    /* Уменьшаем фото во втором тарифе */
+    /* Фото */
     section:nth-of-type(5) img {
         max-height: 250px !important;
         width: 100% !important;
@@ -268,7 +291,16 @@
     }
     
     /* ===== ТАРИФ 3 ===== */
-    /* Уменьшаем фото */
+    section:nth-of-type(6) .container > div:first-child {
+        order: 1 !important;  /* текст */
+    }
+    
+    section:nth-of-type(6) .container > div:last-child {
+        order: 2 !important;  /* фото */
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
     section:nth-of-type(6) img {
         max-height: 250px !important;
         width: 100% !important;
@@ -276,19 +308,32 @@
         border-radius: 24px !important;
     }
     
-    /* Для всех тарифов убираем грид и делаем отступы */
-    section:nth-of-type(4) .container,
-    section:nth-of-type(5) .container,
-    section:nth-of-type(6) .container {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+    /* ===== УМЕНЬШАЕМ РАССТОЯНИЯ МЕЖДУ БЛОКАМИ ТЕКСТА ===== */
+    /* Убираем лишние отступы у параграфов внутри тарифов */
+    section:nth-of-type(4) p,
+    section:nth-of-type(5) p,
+    section:nth-of-type(6) p {
+        margin-bottom: 0.8rem !important;
     }
     
-    /* Выравниваем текст в тарифах */
-    section:nth-of-type(4) [style*="display: grid"],
-    section:nth-of-type(5) [style*="display: grid"],
-    section:nth-of-type(6) [style*="display: grid"] {
-        display: block !important;
+    /* Уменьшаем отступы между ценами */
+    section:nth-of-type(4) [style*="display: flex"],
+    section:nth-of-type(5) [style*="display: flex"],
+    section:nth-of-type(6) [style*="display: flex"] {
+        gap: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Делаем цены чуть компактнее */
+    section:nth-of-type(4) [style*="font-size: 2.5rem"],
+    section:nth-of-type(5) [style*="font-size: 2.5rem"],
+    section:nth-of-type(6) [style*="font-size: 2.5rem"] {
+        font-size: 2rem !important;
+    }
+    
+    /* Уменьшаем отступы у списков (галочки) */
+    section:nth-of-type(6) [style*="margin-bottom: 2rem"] {
+        margin-bottom: 1rem !important;
     }
     /* ===== БЛОК "ОБО МНЕ" ===== */
     /* Меняем порядок */
