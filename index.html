@@ -133,9 +133,8 @@
             background-color: rgba(77, 122, 156, 0.3);
         }
 
-    /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (экраны меньше 768px) ========== */
-@media (max-width: 768px) {
-    /* Фиксированные размеры для мобильных */
+    @media (max-width: 768px) {
+    /* ----- БАЗОВЫЕ РАЗМЕРЫ (как в старом коде) ----- */
     h1 {
         font-size: 2.5rem !important;
     }
@@ -200,225 +199,161 @@
         height: 32px !important;
     }
     
-    /* ===== ПЕРВЫЙ ЭКРАН ===== */
-    section:first-of-type .container {
+    /* ----- ЖЕСТКИЙ СБРОС ДЛЯ ВСЕХ ГРИДОВ ----- */
+    div[style*="display: grid"] {
         display: flex !important;
         flex-direction: column !important;
-        gap: 1.5rem !important;
         grid-template-columns: 1fr !important;
+        gap: 1rem !important;
     }
     
-    section:first-of-type p[style*="text-transform: uppercase"] {
-        order: 1 !important;
+    /* ----- ПЕРВЫЙ ЭКРАН ----- */
+    /* Контейнер первого экрана */
+    body > section:first-child > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* yoga by akula */
+    body > section:first-child p[style*="text-transform: uppercase"] {
+        order: 0 !important;
         margin-bottom: 0.5rem !important;
     }
     
-    .hero-photo {
-        order: 2 !important;
+    /* Фото */
+    body > section:first-child .hero-photo {
+        order: 1 !important;
         width: 100% !important;
-        margin: 0 0 1rem 0 !important;
+        margin: 1rem 0 !important;
     }
     
-    section:first-of-type .container > div:first-of-type {
-        order: 3 !important;
+    /* Весь текстовый блок */
+    body > section:first-child > div:first-child > div:first-child {
+        order: 2 !important;
     }
     
-    section:first-of-type h1 {
-        font-size: 2.2rem !important;
-    }
-    
-    section:first-of-type h1 + h1 {
-        font-size: 2.2rem !important;
-        border-bottom-width: 1px !important;
-    }
-    
-    section:first-of-type p[style*="font-size: 1.8rem"] {
-        font-size: 1.4rem !important;
-    }
-    
-    /* ===== ТАРИФ 1 ===== */
-    section:nth-of-type(4) .container {
+    /* ----- ТАРИФ 1 (текст сверху, фото снизу) ----- */
+    body > section:nth-of-type(4) > div:first-child > div:first-child {
         display: flex !important;
         flex-direction: column !important;
     }
     
-    section:nth-of-type(4) .container > div:first-child {
+    body > section:nth-of-type(4) > div:first-child > div:first-child > div:first-child {
         order: 1 !important;
     }
     
-    section:nth-of-type(4) .container > div:last-child {
+    body > section:nth-of-type(4) > div:first-child > div:first-child > div:last-child {
         order: 2 !important;
-        margin-top: 1.5rem !important;
-        margin-bottom: 2rem !important;
+        margin: 2rem 0 !important;
     }
     
-    section:nth-of-type(4) img {
+    /* ----- ТАРИФ 2 (текст сверху, фото снизу) ----- */
+    body > section:nth-of-type(5) > div:first-child > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    body > section:nth-of-type(5) > div:first-child > div:first-child > div:last-child {
+        order: 1 !important;  /* текст */
+    }
+    
+    body > section:nth-of-type(5) > div:first-child > div:first-child > div:first-child {
+        order: 2 !important;  /* фото */
+        margin: 2rem 0 !important;
+    }
+    
+    /* ----- ТАРИФ 3 (текст сверху, фото снизу) ----- */
+    body > section:nth-of-type(6) > div:first-child > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    body > section:nth-of-type(6) > div:first-child > div:first-child > div:first-child {
+        order: 1 !important;  /* текст */
+    }
+    
+    body > section:nth-of-type(6) > div:first-child > div:first-child > div:last-child {
+        order: 2 !important;  /* фото */
+        margin: 2rem 0 !important;
+    }
+    
+    /* ----- ВСЕ ФОТО В ТАРИФАХ ----- */
+    body > section:nth-of-type(4) img,
+    body > section:nth-of-type(5) img,
+    body > section:nth-of-type(6) img {
         max-height: 250px !important;
         width: 100% !important;
         object-fit: cover !important;
         border-radius: 24px !important;
     }
     
-    /* ===== ТАРИФ 2 ===== */
-    section:nth-of-type(5) .container {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    section:nth-of-type(5) .container > div:first-child {
-        order: 2 !important;
-        margin-top: 1.5rem !important;
-    }
-    
-    section:nth-of-type(5) .container > div:last-child {
-        order: 1 !important;
-    }
-    
-    section:nth-of-type(5) img {
-        max-height: 250px !important;
-        width: 100% !important;
-        object-fit: cover !important;
-        border-radius: 24px !important;
-    }
-    
-    /* ===== ТАРИФ 3 ===== */
-    section:nth-of-type(6) .container {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    section:nth-of-type(6) .container > div:first-child {
-        order: 1 !important;
-    }
-    
-    section:nth-of-type(6) .container > div:last-child {
-        order: 2 !important;
-        margin-top: 1.5rem !important;
-    }
-    
-    section:nth-of-type(6) img {
-        max-height: 250px !important;
-        width: 100% !important;
-        object-fit: cover !important;
-        border-radius: 24px !important;
-    }
-    
-    /* ===== ОБЩИЕ НАСТРОЙКИ ДЛЯ ТАРИФОВ ===== */
-    /* Убираем гриды */
-    section:nth-of-type(4) [style*="grid-template-columns"],
-    section:nth-of-type(5) [style*="grid-template-columns"],
-    section:nth-of-type(6) [style*="grid-template-columns"] {
-        display: block !important;
-    }
-    
-    /* КОМПАКТНЫЕ ОТСТУПЫ */
-    section:nth-of-type(4) p,
-    section:nth-of-type(5) p,
-    section:nth-of-type(6) p {
+    /* ----- КОМПАКТНЫЕ ТАРИФЫ ----- */
+    body > section:nth-of-type(4) p,
+    body > section:nth-of-type(5) p,
+    body > section:nth-of-type(6) p {
         margin-bottom: 0.5rem !important;
     }
     
-    section:nth-of-type(4) h2,
-    section:nth-of-type(5) h2,
-    section:nth-of-type(6) h2 {
+    body > section:nth-of-type(4) h2,
+    body > section:nth-of-type(5) h2,
+    body > section:nth-of-type(6) h2 {
+        font-size: 2rem !important;
         margin-bottom: 1rem !important;
-        font-size: 2rem !important;
     }
     
-    section:nth-of-type(4) [style*="font-size: 3.5rem"],
-    section:nth-of-type(5) [style*="font-size: 3.5rem"],
-    section:nth-of-type(6) [style*="font-size: 3.5rem"] {
-        font-size: 2rem !important;
+    body > section:nth-of-type(4) [style*="font-size: 2.5rem"],
+    body > section:nth-of-type(5) [style*="font-size: 2.5rem"],
+    body > section:nth-of-type(6) [style*="font-size: 2.5rem"] {
+        font-size: 1.8rem !important;
     }
     
-    /* Компактнее цены */
-    section:nth-of-type(4) [style*="display: flex"],
-    section:nth-of-type(5) [style*="display: flex"] {
-        gap: 1.5rem !important;
-        margin-bottom: 0.8rem !important;
+    body > section:nth-of-type(4) [style*="display: flex"]:not(.social-icons),
+    body > section:nth-of-type(5) [style*="display: flex"]:not(.social-icons) {
+        gap: 1rem !important;
+        margin-bottom: 0.5rem !important;
     }
     
-    /* Уменьшаем размер цен */
-    section:nth-of-type(4) [style*="font-size: 2.5rem"],
-    section:nth-of-type(5) [style*="font-size: 2.5rem"],
-    section:nth-of-type(6) [style*="font-size: 2.5rem"] {
-        font-size: 2rem !important;
-        line-height: 1.2 !important;
+    /* ----- ОТСТУПЫ ПЕРЕД КНОПКАМИ ----- */
+    body > section:nth-of-type(4) .button,
+    body > section:nth-of-type(5) .button,
+    body > section:nth-of-type(6) .button {
+        margin-top: 1.5rem !important;
     }
     
-    section:nth-of-type(4) [style*="font-size: 1rem"]:not(.button),
-    section:nth-of-type(5) [style*="font-size: 1rem"]:not(.button) {
-        font-size: 0.9rem !important;
-    }
-    
-    /* Для тарифа 3 (список с галочками) */
-    section:nth-of-type(6) [style*="margin-bottom: 2rem"] {
-        margin-bottom: 0.8rem !important;
-    }
-    
-    section:nth-of-type(6) [style*="font-size: 1.1rem"] {
-        margin-bottom: 0.3rem !important;
-    }
-    
-    /* Убираем лишний отступ перед кнопкой */
-    section:nth-of-type(4) .button,
-    section:nth-of-type(5) .button,
-    section:nth-of-type(6) .button {
-        margin-top: 1rem !important;
-    }
-    
-    /* Убираем отступы у последнего параграфа перед кнопкой */
-    section:nth-of-type(4) p:last-of-type:not(.button),
-    section:nth-of-type(5) p:last-of-type:not(.button),
-    section:nth-of-type(6) p:last-of-type:not(.button) {
-        margin-bottom: 0 !important;
-    }
-    
-    /* ===== БЛОК "ОБО МНЕ" ===== */
-    section:nth-of-type(8) .container {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-    
-    section:nth-of-type(8) .container > div {
+    /* ----- БЛОК "ОБО МНЕ" ----- */
+    body > section:nth-of-type(8) > div:first-child > div:first-child {
         display: flex !important;
         flex-direction: column !important;
     }
     
-    section:nth-of-type(8) .container > div:first-child {
-        order: 1 !important;
+    /* Левая колонка (всё) */
+    body > section:nth-of-type(8) > div:first-child > div:first-child > div:first-child {
+        display: flex !important;
+        flex-direction: column !important;
     }
     
-    section:nth-of-type(8) [style*="aspect-ratio: 3/4"] {
+    /* Фото Леры */
+    body > section:nth-of-type(8) [style*="aspect-ratio: 3/4"] {
         order: 1 !important;
-        margin-bottom: 1.5rem !important;
+        margin: 0 auto 1.5rem auto !important;
         max-width: 100% !important;
-        margin-left: 0 !important;
     }
     
-    section:nth-of-type(8) .certs-grid {
+    /* Правая колонка (текст) */
+    body > section:nth-of-type(8) > div:first-child > div:first-child > div:last-child {
+        order: 2 !important;
+    }
+    
+    /* Дипломы */
+    body > section:nth-of-type(8) .certs-grid {
         order: 3 !important;
         margin-top: 2rem !important;
         justify-content: center !important;
     }
     
-    section:nth-of-type(8) p[style*="text-align: right"] {
-        order: 3 !important;
+    body > section:nth-of-type(8) p[style*="text-align: right"] {
         text-align: center !important;
-        margin-top: 0.5rem !important;
-    }
-    
-    section:nth-of-type(8) .container > div:last-child {
-        order: 2 !important;
-    }
-    
-    section:nth-of-type(8) [style*="text-align: right"] {
-        text-align: left !important;
-    }
-    
-    section:nth-of-type(8) [style*="margin-left: auto"] {
-        margin-left: 0 !important;
-        max-width: 100% !important;
+        order: 3 !important;
     }
 }
  </style>   
