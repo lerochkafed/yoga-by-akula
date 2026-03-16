@@ -290,6 +290,61 @@
     section:nth-of-type(6) [style*="display: grid"] {
         display: block !important;
     }
+    /* ===== БЛОК "ОБО МНЕ" ===== */
+    /* Меняем порядок */
+    section:nth-of-type(8) .container > div {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Левая колонка (фото + дипломы) */
+    section:nth-of-type(8) .container > div:first-child {
+        order: 1 !important;
+    }
+    
+    /* Фото */
+    section:nth-of-type(8) [style*="aspect-ratio: 3/4"] {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Дипломы — переносим вниз, после текста */
+    section:nth-of-type(8) .certs-grid {
+        order: 3 !important;
+        margin-top: 2rem !important;
+        justify-content: center !important;
+    }
+    
+    /* Текст "образование" и подпись "нажмите..." тоже с дипломами */
+    section:nth-of-type(8) p[style*="text-align: right"] {
+        order: 3 !important;
+        text-align: center !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    /* Правая колонка (весь текст) */
+    section:nth-of-type(8) .container > div:last-child {
+        order: 2 !important;
+    }
+    
+    /* Убираем грид */
+    section:nth-of-type(8) .container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    /* Выравниваем текст по левому краю */
+    section:nth-of-type(8) [style*="text-align: right"] {
+        text-align: left !important;
+    }
+    
+    /* Убираем лишние отступы */
+    section:nth-of-type(8) [style*="margin-left: auto"] {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+    }
 }
     
     /* Немного уменьшаем заголовок на телефоне */
