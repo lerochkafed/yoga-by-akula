@@ -133,119 +133,110 @@
             background-color: rgba(77, 122, 156, 0.3);
         }
 
-        /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (экраны меньше 768px) ========== */
-        @media (max-width: 768px) {
-            /* Фиксированные размеры для мобильных */
-            h1 {
-                font-size: 2.5rem !important;
-            }
-            
-            h2 {
-                font-size: 2rem !important;
-            }
-            
-            h3 {
-                font-size: 1.4rem !important;
-            }
-            
-            p {
-                font-size: 1rem !important;
-            }
-            
-            /* Сетки в одну колонку */
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr !important;
-            }
-            
-            /* Убираем гриды везде */
-            [style*="display: grid"] {
-                grid-template-columns: 1fr !important;
-            }
-            
-            /* Отступы меньше */
-            section {
-                padding: 3rem 0 !important;
-            }
-            
-            /* Кнопки на всю ширину */
-            .button, [class*="button"] {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            
-            /* Фото в герое */
-            .hero-photo {
-                margin-top: 2rem !important;
-            }
-            
-            /* Сертификаты по левому краю */
-            .certs-grid {
-                justify-content: flex-start !important;
-            }
-            .certs-grid [style*="text-align: right"] {
-                text-align: left !important;
-            }
-            
-            /* Цены */
-            .price-flex {
-                gap: 1.5rem !important;
-            }
-            
-            /* Соцсети */
-            .social-icons {
-                gap: 2rem !important;
-            }
-            .social-icons svg {
-                width: 32px !important;
-                height: 32px !important;
-            }
-            /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНА ========== */
-    /* ... твой существующий код ... */
-
-    /* ===== МЕНЯЕМ ПОРЯДОК В ПЕРВОМ ЭКРАНЕ (ТОЛЬКО ТЕЛЕФОНЫ) ===== */
+    /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (экраны меньше 768px) ========== */
 @media (max-width: 768px) {
+    /* Фиксированные размеры для мобильных */
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    p {
+        font-size: 1rem !important;
+    }
+    
+    /* Сетки в одну колонку */
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Убираем гриды везде */
+    [style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Отступы меньше */
+    section {
+        padding: 3rem 0 !important;
+    }
+    
+    /* Кнопки на всю ширину */
+    .button, [class*="button"] {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Фото в герое */
+    .hero-photo {
+        margin-top: 2rem !important;
+    }
+    
+    /* Сертификаты по левому краю */
+    .certs-grid {
+        justify-content: flex-start !important;
+    }
+    .certs-grid [style*="text-align: right"] {
+        text-align: left !important;
+    }
+    
+    /* Цены */
+    .price-flex {
+        gap: 1.5rem !important;
+    }
+    
+    /* Соцсети */
+    .social-icons {
+        gap: 2rem !important;
+    }
+    .social-icons svg {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    /* ===== ПЕРВЫЙ ЭКРАН ===== */
     section:first-of-type .container {
         display: flex !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
+        grid-template-columns: 1fr !important;
     }
     
-    /* yoga by akula — СВЕРХУ (было order 1, оставляем) */
     section:first-of-type p[style*="text-transform: uppercase"] {
         order: 1 !important;
         margin-bottom: 0.5rem !important;
     }
     
-    /* Фото — ВТОРЫМ (было order 2, оставляем) */
     .hero-photo {
         order: 2 !important;
         width: 100% !important;
         margin: 0 0 1rem 0 !important;
     }
     
-    /* Текстовый блок (заголовок, подзаголовок, кнопка) — ТРЕТЬИМ */
     section:first-of-type .container > div:first-of-type {
         order: 3 !important;
     }
     
-    /* Убираем грид */
-    section:first-of-type .container {
-        grid-template-columns: 1fr !important;
-    }
-    /* ===== ВСЕ ТАРИФЫ ===== */
-    /* Находим все секции с тарифами по заголовку "тариф" */
-    section:has(p:contains("тариф")) {
-        /* этот селектор может не сработать в старых браузерах, поэтому используем запасной вариант */
+    section:first-of-type h1 {
+        font-size: 2.2rem !important;
     }
     
-    /* Лучше так: применяем ко всем секциям, где есть "тариф" в тексте */
-    section {
-        /* ничего не делаем со всеми секциями */
+    section:first-of-type h1 + h1 {
+        font-size: 2.2rem !important;
+        border-bottom-width: 1px !important;
     }
     
-    /* А теперь конкретно к каждому тарифу через порядковый номер, но более жёстко */
+    section:first-of-type p[style*="font-size: 1.8rem"] {
+        font-size: 1.4rem !important;
+    }
     
-    /* ТАРИФ 1 */
+    /* ===== ТАРИФ 1 ===== */
     section:nth-of-type(4) .container {
         display: flex !important;
         flex-direction: column !important;
@@ -268,19 +259,17 @@
         border-radius: 24px !important;
     }
     
-    /* ТАРИФ 2 */
+    /* ===== ТАРИФ 2 ===== */
     section:nth-of-type(5) .container {
         display: flex !important;
         flex-direction: column !important;
     }
     
-    /* Фото (сейчас оно слева) - делаем вторым */
     section:nth-of-type(5) .container > div:first-child {
         order: 2 !important;
         margin-top: 1.5rem !important;
     }
     
-    /* Текст (сейчас справа) - делаем первым */
     section:nth-of-type(5) .container > div:last-child {
         order: 1 !important;
     }
@@ -292,7 +281,7 @@
         border-radius: 24px !important;
     }
     
-    /* ТАРИФ 3 */
+    /* ===== ТАРИФ 3 ===== */
     section:nth-of-type(6) .container {
         display: flex !important;
         flex-direction: column !important;
@@ -314,7 +303,7 @@
         border-radius: 24px !important;
     }
     
-    /* ===== ОБЩИЕ НАСТРОЙКИ ДЛЯ ВСЕХ ТАРИФОВ ===== */
+    /* ===== ОБЩИЕ НАСТРОЙКИ ДЛЯ ТАРИФОВ ===== */
     /* Убираем гриды */
     section:nth-of-type(4) [style*="grid-template-columns"],
     section:nth-of-type(5) [style*="grid-template-columns"],
@@ -322,43 +311,84 @@
         display: block !important;
     }
     
-    /* Уменьшаем расстояния */
+    /* КОМПАКТНЫЕ ОТСТУПЫ */
     section:nth-of-type(4) p,
     section:nth-of-type(5) p,
     section:nth-of-type(6) p {
-        margin-bottom: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    section:nth-of-type(4) h2,
+    section:nth-of-type(5) h2,
+    section:nth-of-type(6) h2 {
+        margin-bottom: 1rem !important;
+        font-size: 2rem !important;
+    }
+    
+    section:nth-of-type(4) [style*="font-size: 3.5rem"],
+    section:nth-of-type(5) [style*="font-size: 3.5rem"],
+    section:nth-of-type(6) [style*="font-size: 3.5rem"] {
+        font-size: 2rem !important;
     }
     
     /* Компактнее цены */
     section:nth-of-type(4) [style*="display: flex"],
     section:nth-of-type(5) [style*="display: flex"] {
         gap: 1.5rem !important;
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.8rem !important;
     }
     
+    /* Уменьшаем размер цен */
     section:nth-of-type(4) [style*="font-size: 2.5rem"],
     section:nth-of-type(5) [style*="font-size: 2.5rem"],
     section:nth-of-type(6) [style*="font-size: 2.5rem"] {
         font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    section:nth-of-type(4) [style*="font-size: 1rem"]:not(.button),
+    section:nth-of-type(5) [style*="font-size: 1rem"]:not(.button) {
+        font-size: 0.9rem !important;
     }
     
     /* Для тарифа 3 (список с галочками) */
     section:nth-of-type(6) [style*="margin-bottom: 2rem"] {
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.8rem !important;
     }
+    
+    section:nth-of-type(6) [style*="font-size: 1.1rem"] {
+        margin-bottom: 0.3rem !important;
+    }
+    
+    /* Убираем лишний отступ перед кнопкой */
+    section:nth-of-type(4) .button,
+    section:nth-of-type(5) .button,
+    section:nth-of-type(6) .button {
+        margin-top: 1rem !important;
+    }
+    
+    /* Убираем отступы у последнего параграфа перед кнопкой */
+    section:nth-of-type(4) p:last-of-type:not(.button),
+    section:nth-of-type(5) p:last-of-type:not(.button),
+    section:nth-of-type(6) p:last-of-type:not(.button) {
+        margin-bottom: 0 !important;
+    }
+    
     /* ===== БЛОК "ОБО МНЕ" ===== */
-    /* Меняем порядок */
+    section:nth-of-type(8) .container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
     section:nth-of-type(8) .container > div {
         display: flex !important;
         flex-direction: column !important;
     }
     
-    /* Левая колонка (фото + дипломы) */
     section:nth-of-type(8) .container > div:first-child {
         order: 1 !important;
     }
     
-    /* Фото */
     section:nth-of-type(8) [style*="aspect-ratio: 3/4"] {
         order: 1 !important;
         margin-bottom: 1.5rem !important;
@@ -366,58 +396,32 @@
         margin-left: 0 !important;
     }
     
-    /* Дипломы — переносим вниз, после текста */
     section:nth-of-type(8) .certs-grid {
         order: 3 !important;
         margin-top: 2rem !important;
         justify-content: center !important;
     }
     
-    /* Текст "образование" и подпись "нажмите..." тоже с дипломами */
     section:nth-of-type(8) p[style*="text-align: right"] {
         order: 3 !important;
         text-align: center !important;
         margin-top: 0.5rem !important;
     }
     
-    /* Правая колонка (весь текст) */
     section:nth-of-type(8) .container > div:last-child {
         order: 2 !important;
     }
     
-    /* Убираем грид */
-    section:nth-of-type(8) .container {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-    
-    /* Выравниваем текст по левому краю */
     section:nth-of-type(8) [style*="text-align: right"] {
         text-align: left !important;
     }
     
-    /* Убираем лишние отступы */
     section:nth-of-type(8) [style*="margin-left: auto"] {
         margin-left: 0 !important;
         max-width: 100% !important;
     }
 }
-    
-    /* Немного уменьшаем заголовок на телефоне */
-    section:first-of-type h1 {
-        font-size: 2.2rem !important;
-    }
-    
-    section:first-of-type h1 + h1 {
-        font-size: 2.2rem !important;
-        border-bottom-width: 1px !important;
-    }
-    
-    /* Уменьшаем подзаголовок */
-    section:first-of-type p[style*="font-size: 1.8rem"] {
-        font-size: 1.4rem !important;
-    }
-    </style>
+ </style>   
 </head>
 <body>
     <!-- ГЕРОЙ - ПЕРВЫЙ ЭКРАН -->
