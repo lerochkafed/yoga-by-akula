@@ -202,38 +202,37 @@
             /* ========== ТОЛЬКО ДЛЯ ТЕЛЕФОНА ========== */
     /* ... твой существующий код ... */
 
-    /* МЕНЯЕМ ПОРЯДОК ТОЛЬКО НА ТЕЛЕФОНЕ */
-    
-    /* Делаем контейнер флексом, чтобы управлять порядком */
+    /* ===== МЕНЯЕМ ПОРЯДОК В ПЕРВОМ ЭКРАНЕ (ТОЛЬКО ТЕЛЕФОНЫ) ===== */
+@media (max-width: 768px) {
     section:first-of-type .container {
         display: flex !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
     }
     
-    /* Логотип "yoga by akula" показываем сверху */
+    /* yoga by akula — сверху */
     section:first-of-type p[style*="text-transform: uppercase"] {
         order: 1 !important;
         margin-bottom: 0.5rem !important;
     }
     
-    /* Фото ставим вторым */
+    /* Фото — вторым */
     .hero-photo {
         order: 2 !important;
         width: 100% !important;
         margin: 0 0 1rem 0 !important;
     }
     
-    /* Весь текстовый блок с заголовками и кнопкой ставим третьим */
-    section:first-of-type .container > div:last-child {
+    /* Текстовый блок (где заголовок, подзаголовок, кнопка) — третьим */
+    section:first-of-type .container > div:first-of-type {
         order: 3 !important;
     }
     
-    /* Убираем лишние отступы */
-    section:first-of-type .container > div:last-child h1,
-    section:first-of-type .container > div:last-child p {
-        text-align: left !important;
+    /* Убираем грид */
+    section:first-of-type .container {
+        grid-template-columns: 1fr !important;
     }
+}
     
     /* Немного уменьшаем заголовок на телефоне */
     section:first-of-type h1 {
