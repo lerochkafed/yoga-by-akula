@@ -304,6 +304,27 @@
             color: #2c3e4e;
         }
 
+        /* Список запросов нутрициологии */
+        .request-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .request-list li {
+            font-size: 1rem;
+            color: #4d7a9c;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .request-list li::before {
+            content: "•";
+            color: #4d7a9c;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+
         /* Адаптив */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem !important; }
@@ -351,12 +372,13 @@
 <body>
 
 <main>
-    <!-- Навигация (добавлена новая вкладка "Мини-курсы") -->
+    <!-- Навигация (добавлена вкладка Нутрициология) -->
     <div class="container">
         <div class="nav-menu">
             <a href="#hero">Главная</a>
             <a href="#club">Что ждёт в клубе</a>
             <a href="#tariffs">Тарифы</a>
+            <a href="#nutrition">Нутрициология</a>
             <a href="#minicourses">Мини-курсы</a>
             <a href="#reviews">Отзывы</a>
             <a href="#about">Обо мне</a>
@@ -447,7 +469,7 @@
         </div>
     </section>
 
-    <!-- Тариф 1: Telegram-клуб (оставил как есть) -->
+    <!-- Тариф 1: Telegram-клуб -->
     <section id="tariffs" style="padding: 5rem 0; background-color: #eef4fa;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
@@ -548,8 +570,43 @@
         </div>
     </section>
 
+    <!-- НОВАЯ СЕКЦИЯ: Нутрициология (разовая консультация) -->
+    <section id="nutrition" style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="fade-in">
+                    <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">консультация</p>
+                    <h2 style="font-size: 3.5rem; font-weight: 350; margin-bottom: 1.5rem;">Нутрициология</h2>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">5 000₽</div>
+                        <p style="font-size: 1rem; color: #4d7a9c; margin-top: 0.5rem;">разовая консультация</p>
+                    </div>
+                    <p style="font-size: 1rem; color: #4d7a9c; margin-bottom: 1.5rem; line-height: 1.6;">
+                        На консультации мы обсуждаем вашу проблему, выясняем причины, формируем чёткую цель и делаем первые шаги на пути к результату.
+                    </p>
+                    <p style="font-size: 1rem; font-weight: 500; color: #2c3e4e; margin-bottom: 0.8rem;">Какие могут быть запросы:</p>
+                    <ul class="request-list">
+                        <li>наладить систему питания и образа жизни</li>
+                        <li>похудеть / набрать вес / мышечную массу</li>
+                        <li>поднять уровень энергии</li>
+                        <li>выяснить и закрыть дефициты</li>
+                        <li>восстановить ЖКТ, баланс сна и бодрствования</li>
+                        <li>скорректировать привычки, которые мешают качественной жизни</li>
+                    </ul>
+                    <a href="https://t.me/akula_lol" target="_blank" class="button-outline" style="margin-top: 1rem;">
+                        <span>Записаться на консультацию</span>
+                        <span style="font-size: 1.2rem;">→</span>
+                    </a>
+                </div>
+                <div class="tariff-photo fade-in">
+                    <img src="images/nutrition-consult.jpg" alt="Нутрициология">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- НОВЫЙ БЛОК: Мини-курсы (аккордеон) -->
-    <section id="minicourses" style="padding: 5rem 0; background-color: white;">
+    <section id="minicourses" style="padding: 5rem 0; background-color: #eef4fa;">
         <div class="container">
             <div style="text-align: center; max-width: 700px; margin: 0 auto;">
                 <div class="accordion-header" onclick="toggleCourses()">
