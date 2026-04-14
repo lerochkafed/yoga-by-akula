@@ -227,7 +227,84 @@
             opacity: 0.9;
         }
 
-        /* Адаптив (сохранил твои настройки) */
+        /* Стили для аккордеона мини-курсов */
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .accordion-header:hover {
+            opacity: 0.8;
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+        .arrow-icon.rotated {
+            transform: rotate(180deg);
+        }
+        .courses-wrapper {
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            max-height: 0;
+        }
+        .courses-wrapper.open {
+            max-height: 800px;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(77,122,156,0.1);
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(77,122,156,0.1);
+        }
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #2c3e4e;
+            margin: 1rem 0;
+        }
+        .course-note {
+            font-size: 0.8rem;
+            color: #a0b8cc;
+            margin-top: 0.8rem;
+        }
+
+        /* Навигация */
+        .nav-menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(77,122,156,0.15);
+            margin-bottom: 1rem;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #4d7a9c;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .nav-menu a:hover {
+            color: #2c3e4e;
+        }
+
+        /* Адаптив */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem !important; }
             h2 { font-size: 2rem !important; }
@@ -236,8 +313,9 @@
             .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
             section { padding: 3rem 0 !important; }
             .button, .button-outline { width: 100% !important; text-align: center !important; justify-content: center !important; }
+            .courses-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .nav-menu { justify-content: center; gap: 1rem; flex-wrap: wrap; }
             
-            /* Твои кастомные адаптивные правки */
             [style*="display: grid"] {
                 display: flex !important;
                 flex-direction: column !important;
@@ -256,7 +334,6 @@
                 order: 2 !important;
             }
             
-            /* Тарифы на мобилке */
             body > section:nth-of-type(4) > div:first-child > div:first-child,
             body > section:nth-of-type(5) > div:first-child > div:first-child,
             body > section:nth-of-type(6) > div:first-child > div:first-child {
@@ -274,8 +351,20 @@
 <body>
 
 <main>
+    <!-- Навигация (добавлена новая вкладка "Мини-курсы") -->
+    <div class="container">
+        <div class="nav-menu">
+            <a href="#hero">Главная</a>
+            <a href="#club">Что ждёт в клубе</a>
+            <a href="#tariffs">Тарифы</a>
+            <a href="#minicourses">Мини-курсы</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#about">Обо мне</a>
+        </div>
+    </div>
+
     <!-- ГЕРОЙ - ПЕРВЫЙ ЭКРАН -->
-    <section style="padding: 2rem 0 4rem 0;">
+    <section id="hero" style="padding: 2rem 0 4rem 0;">
         <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
             <div class="fade-in">
                 <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: #4d7a9c; margin-bottom: 1.5rem; font-weight: 350;">
@@ -317,7 +406,7 @@
     </section>
 
     <!-- Что ждет в клубе (сетка 2x2) -->
-    <section>
+    <section id="club">
         <div class="container">
             <h2 class="fade-in" style="text-align: center;">Что тебя ждёт в клубе?</h2>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem;">
@@ -358,8 +447,8 @@
         </div>
     </section>
 
-    <!-- Тариф 1: Telegram-клуб -->
-    <section style="padding: 5rem 0; background-color: #eef4fa;">
+    <!-- Тариф 1: Telegram-клуб (оставил как есть) -->
+    <section id="tariffs" style="padding: 5rem 0; background-color: #eef4fa;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                 <div class="fade-in">
@@ -390,7 +479,7 @@
         </div>
     </section>
 
-    <!-- Тариф 2: Персональные занятия -->
+    <!-- Тариф 2: Персональные занятия (ОБНОВЛЕННЫЕ ЦЕНЫ) -->
     <section style="padding: 5rem 0; background-color: white;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
@@ -401,19 +490,22 @@
                     <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">тариф 2</p>
                     <h2 style="font-size: 3.5rem; font-weight: 350; line-height: 1.2; margin-bottom: 1.5rem;">Йога:<br>Персональные занятия</h2>
                     <div style="margin-bottom: 2rem;">
-                        <div style="font-size: 1rem; color: #7a9bb9; margin-bottom: 0.2rem;">Разовое занятие</div>
-                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e; margin-bottom: 1.5rem;">3000₽</div>
+                        <div style="font-size: 1rem; color: #7a9bb9; margin-bottom: 0.2rem;">Разовое занятие (1,5 часа)</div>
+                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e; margin-bottom: 1.5rem;">4500₽</div>
                         <p style="font-size: 1.1rem; font-weight: 500; color: #4d7a9c; margin-bottom: 1rem;">Абонементы на месяц:</p>
                         <div style="display: flex; gap: 3rem; margin-bottom: 2rem;">
                             <div>
                                 <div style="font-size: 1rem; color: #7a9bb9;">4 практики</div>
-                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">9600₽</div>
+                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">12 600₽</div>
+                                <div style="font-size: 0.8rem; color: #a0b8cc;">(3150₽/занятие)</div>
                             </div>
                             <div>
                                 <div style="font-size: 1rem; color: #7a9bb9;">8 практик</div>
-                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">16800₽</div>
+                                <div style="font-size: 2rem; font-weight: 400; color: #2c3e4e;">23 400₽</div>
+                                <div style="font-size: 0.8rem; color: #a0b8cc;">(2925₽/занятие)</div>
                             </div>
                         </div>
+                        <p style="font-size: 0.85rem; color: #a0b8cc; margin-top: -0.5rem;">*абонемент действует в течение месяца с момента оплаты</p>
                     </div>
                     <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; line-height: 1.6;">Индивидуальный подход, выстраиваем личную практику под твой уровень и цели, в удобное для тебя время.</p>
                     <a href="https://t.me/akula_lol" target="_blank" class="button-outline">
@@ -426,23 +518,23 @@
         </div>
     </section>
 
-    <!-- Тариф 3: Йога + Питание -->
+    <!-- Тариф 3: Йога + Питание (ОБНОВЛЕННЫЙ) -->
     <section style="padding: 5rem 0; background-color: #eef4fa;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                 <div class="fade-in">
                     <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #4d7a9c; margin-bottom: 1rem;">тариф 3</p>
-                    <h2 style="font-size: 3.5rem; font-weight: 350; margin-bottom: 1.5rem;">Йога + Ведение по питанию</h2>
+                    <h2 style="font-size: 3.5rem; font-weight: 350; margin-bottom: 1.5rem;">Ведение по питанию + Йога</h2>
                     <div style="margin-bottom: 2rem;">
-                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">24 000₽</div>
+                        <div style="font-size: 2.5rem; font-weight: 400; color: #2c3e4e;">35 000₽</div>
                         <p style="font-size: 1.1rem; color: #4d7a9c;">месяц</p>
                     </div>
                     <div style="margin-bottom: 2rem;">
-                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ 8 практик</p>
-                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Анализ твоей конституции</p>
-                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Рекомендации по питанию и режиму</p>
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Полное ведение по питанию</p>
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Индивидуальные рекомендации</p>
+                        <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 0.5rem;">✓ Персональные практики йоги</p>
                     </div>
-                    <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; line-height: 1.6;">Для тех, кто готов работать комплексно и серьезно подойти к изменению жизни, тела и отношения к внешнему.</p>
+                    <p style="font-size: 1.1rem; color: #4d7a9c; margin-bottom: 2rem; line-height: 1.6;">Для тех, кто готов работать комплексно и серьезно подойти к изменению жизни, тела и отношения к себе.</p>
                     <a href="https://t.me/akula_lol" target="_blank" class="button-outline">
                         <span>Выбрать тариф</span>
                         <span style="font-size: 1.2rem;">→</span>
@@ -456,8 +548,46 @@
         </div>
     </section>
 
+    <!-- НОВЫЙ БЛОК: Мини-курсы (аккордеон) -->
+    <section id="minicourses" style="padding: 5rem 0; background-color: white;">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <div class="accordion-header" onclick="toggleCourses()">
+                    <h2 style="font-size: 2.2rem; font-weight: 350; color: #2c3e4e; margin: 0;">Если ты хочешь попробовать позаниматься самостоятельно</h2>
+                    <span id="arrowIcon" class="arrow-icon" style="font-size: 1.8rem;">▼</span>
+                </div>
+                <div id="coursesWrapper" class="courses-wrapper">
+                    <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <h3>Здоровая и красивая спина</h3>
+                            <div class="course-price">999₽</div>
+                            <p style="font-size: 0.9rem; margin: 0;">Комплекс упражнений для укрепления спины и осанки</p>
+                        </div>
+                        <div class="course-card">
+                            <h3>Йога от тревожности</h3>
+                            <div class="course-price">999₽</div>
+                            <p style="font-size: 0.9rem; margin: 0;">Практики для успокоения ума и снятия напряжения</p>
+                        </div>
+                        <div class="course-card">
+                            <h3>Плоский и рельефный живот</h3>
+                            <div class="course-price">999₽</div>
+                            <p style="font-size: 0.9rem; margin: 0;">Эффективные упражнения для мышц кора</p>
+                        </div>
+                    </div>
+                    <div class="course-note" style="margin-top: 1rem; text-align: center;">
+                        *Доступ к любому курсу сохраняется на 1 месяц
+                    </div>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <p style="font-size: 0.9rem; color: #4d7a9c;">Если вы хотите всё сразу — можете приобрести подписку на йога-клуб, участникам клуба доступны эти курсы в любое время!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ОТЗЫВЫ -->
-    <section style="padding: 6rem 0; background-color: #f5f9ff;">
+    <section id="reviews" style="padding: 6rem 0; background-color: #f5f9ff;">
         <div class="container">
             <h2 class="fade-in" style="text-align: center; margin-bottom: 4rem; font-weight: 350; font-size: 2.2rem; color: #2c3e4e;">
                 Что говорят мои ученики:
@@ -504,7 +634,7 @@
     </section>
 
     <!-- ОБО МНЕ -->
-    <section style="padding: 5rem 0; background-color: white;">
+    <section id="about" style="padding: 5rem 0; background-color: white;">
         <div class="container">
             <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-weight: 350; font-size: 2.2rem; color: #2c3e4e;">
                 Обо мне:
@@ -587,6 +717,14 @@
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
     faders.forEach(el => observer.observe(el));
+
+    // Функция для аккордеона мини-курсов
+    function toggleCourses() {
+        const wrapper = document.getElementById('coursesWrapper');
+        const arrow = document.getElementById('arrowIcon');
+        wrapper.classList.toggle('open');
+        arrow.classList.toggle('rotated');
+    }
 </script>
 
 </body>
