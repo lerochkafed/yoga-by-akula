@@ -367,6 +367,37 @@
                 order: 2 !important;
             }
         }
+        /* ФИКС ТОЛЬКО ДЛЯ МИНИ-КУРСОВ на мобилке */
+@media (max-width: 768px) {
+    /* Отменяем общие адаптивные правила для этой сетки */
+    #minicourses .courses-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    #minicourses .course-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 280px !important;
+    }
+    
+    #minicourses .course-card p {
+        flex: 1 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    #minicourses .course-card .button-outline {
+        width: 100% !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    /* Убираем возможные конфликты */
+    #minicourses .course-card br {
+        display: none !important;
+    }
+}
     </style>
 </head>
 <body>
