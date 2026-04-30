@@ -704,7 +704,6 @@
                         width: 100%;
                         text-decoration: none;
                         line-height: 1.2;
-                        margin-top: auto;
                         white-space: nowrap;
                         border: none;
                         box-sizing: border-box;
@@ -727,31 +726,43 @@
 
                 <div class="courses-mini">
                     
+                    <!-- КУРС 1 -->
                     <div class="card-mini">
                         <h3>Здоровая и красивая спина</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Комплекс упражнений для укрепления спины и осанки</p>
-                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога для здоровой и красивой спины', '_blank')" class="btn-kassa">
-                            Купить курс 890,00&nbsp;₽
-                        </button>
+                        <form action="https://yookassa.ru/integration/simplepay/payment" method="GET" target="_blank" style="margin-top: auto;">
+                            <input type="hidden" name="shopId" value="1143889">
+                            <input type="hidden" name="sum" value="890">
+                            <input type="hidden" name="customerNumber" value="Мини-курс Йога для здоровой и красивой спины">
+                            <button type="submit" class="btn-kassa">Купить курс 890,00&nbsp;₽</button>
+                        </form>
                     </div>
                     
+                    <!-- КУРС 2 -->
                     <div class="card-mini">
                         <h3>Йога от тревожности</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Практики для успокоения ума и снятия напряжения</p>
-                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога от тревожности', '_blank')" class="btn-kassa">
-                            Купить 890,00&nbsp;₽
-                        </button>
+                        <form action="https://yookassa.ru/integration/simplepay/payment" method="GET" target="_blank" style="margin-top: auto;">
+                            <input type="hidden" name="shopId" value="1143889">
+                            <input type="hidden" name="sum" value="890">
+                            <input type="hidden" name="customerNumber" value="Мини-курс Йога от тревожности">
+                            <button type="submit" class="btn-kassa">Купить 890,00&nbsp;₽</button>
+                        </form>
                     </div>
                     
+                    <!-- КУРС 3 -->
                     <div class="card-mini">
                         <h3>Плоский и рельефный живот</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Эффективные упражнения для мышц кора</p>
-                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини курс Плоский и рельефный живот через йогу', '_blank')" class="btn-kassa">
-                            Купить курс 890,00&nbsp;₽
-                        </button>
+                        <form action="https://yookassa.ru/integration/simplepay/payment" method="GET" target="_blank" style="margin-top: auto;">
+                            <input type="hidden" name="shopId" value="1143889">
+                            <input type="hidden" name="sum" value="890">
+                            <input type="hidden" name="customerNumber" value="Мини курс Плоский и рельефный живот через йогу">
+                            <button type="submit" class="btn-kassa">Купить курс 890,00&nbsp;₽</button>
+                        </form>
                     </div>
                     
                 </div>
