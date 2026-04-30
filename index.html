@@ -701,6 +701,41 @@
     }
 </style>
 
+<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css?v=1.34.0">
+
+<style>
+    .ym-btn-pay-custom {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        background-color: #FF8C00 !important;
+        color: #fff !important;
+        font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+        font-weight: 450 !important;
+        font-size: 1.1rem !important;
+        padding: 14px 32px !important;
+        border-radius: 40px !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        min-width: 200px !important;
+        text-decoration: none !important;
+        line-height: 1.2 !important;
+    }
+    .ym-btn-pay-custom:hover {
+        background-color: #e67e00 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,140,0,0.3) !important;
+    }
+    @media (max-width: 768px) {
+        .ym-btn-pay-custom {
+            width: 100% !important;
+            min-width: auto !important;
+        }
+    }
+</style>
+
 <div class="courses-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
     
     <!-- КУРС 1: Здоровая и красивая спина -->
@@ -709,18 +744,13 @@
         <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Комплекс упражнений для укрепления спины и осанки</p>
         
-        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
-            <input name="customerNumber" type="hidden" value="Мини-курс Йога для здоровой и красивой спины">
-            <div class="ym-payment-btn-block">
-                <div class="ym-input-icon-rub ym-display-none">
-                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
-                </div>
-                <button type="submit" data-text="Купить курс" class="ym-btn-pay ym-result-price">
-                    <span class="ym-text-crop">Купить курс</span>
-                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
-                </button>
-            </div>
-            <input name="shopId" type="hidden" value="1143889">
+        <form method="post" action="https://yookassa.ru/integration/simplepay/payment" accept-charset="utf-8">
+            <input type="hidden" name="shopId" value="1143889">
+            <input type="hidden" name="sum" value="890">
+            <input type="hidden" name="customerNumber" value="Мини-курс Йога для здоровой и красивой спины">
+            <button type="submit" class="ym-btn-pay-custom">
+                Купить курс&nbsp;890,00&nbsp;₽
+            </button>
         </form>
     </div>
     
@@ -730,18 +760,13 @@
         <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Практики для успокоения ума и снятия напряжения</p>
         
-        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
-            <input name="customerNumber" type="hidden" value="Мини-курс Йога от тревожности">
-            <div class="ym-payment-btn-block">
-                <div class="ym-input-icon-rub ym-display-none">
-                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
-                </div>
-                <button type="submit" data-text="Купить" class="ym-btn-pay ym-result-price">
-                    <span class="ym-text-crop">Купить</span>
-                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
-                </button>
-            </div>
-            <input name="shopId" type="hidden" value="1143889">
+        <form method="post" action="https://yookassa.ru/integration/simplepay/payment" accept-charset="utf-8">
+            <input type="hidden" name="shopId" value="1143889">
+            <input type="hidden" name="sum" value="890">
+            <input type="hidden" name="customerNumber" value="Мини-курс Йога от тревожности">
+            <button type="submit" class="ym-btn-pay-custom">
+                Купить&nbsp;890,00&nbsp;₽
+            </button>
         </form>
     </div>
     
@@ -751,25 +776,17 @@
         <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Эффективные упражнения для мышц кора</p>
         
-        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
-            <input name="customerNumber" type="hidden" value="Мини курс Плоский и рельефный живот через йогу">
-            <div class="ym-payment-btn-block">
-                <div class="ym-input-icon-rub ym-display-none">
-                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
-                </div>
-                <button type="submit" data-text="Купить курс" class="ym-btn-pay ym-result-price">
-                    <span class="ym-text-crop">Купить курс</span>
-                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
-                </button>
-            </div>
-            <input name="shopId" type="hidden" value="1143889">
+        <form method="post" action="https://yookassa.ru/integration/simplepay/payment" accept-charset="utf-8">
+            <input type="hidden" name="shopId" value="1143889">
+            <input type="hidden" name="sum" value="890">
+            <input type="hidden" name="customerNumber" value="Мини курс Плоский и рельефный живот через йогу">
+            <button type="submit" class="ym-btn-pay-custom">
+                Купить курс&nbsp;890,00&nbsp;₽
+            </button>
         </form>
     </div>
     
 </div>
-
-<script src="https://yookassa.ru/integration/simplepay/js/yookassa_construct_form.js?v=1.34.0"></script>
-                    
                     <div class="course-note" style="margin-top: 1rem; text-align: center; font-size: 0.8rem; color: #a0b8cc;">
                         *Доступ к любому курсу сохраняется на 1 месяц
                     </div>
