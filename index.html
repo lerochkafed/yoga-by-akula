@@ -647,30 +647,73 @@
                 <div id="coursesWrapper" class="courses-wrapper">
                     <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
                     
-                  <div class="courses-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
+                  <!-- Подключаем стили и скрипт ЮKassa (один раз) -->
+<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css?v=1.34.0">
+<script src="https://yookassa.ru/integration/simplepay/js/yookassa_construct_form.js?v=1.34.0"></script>
+
+<div class="courses-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
     
-    <!-- КУРС 1 -->
-    <div class="course-card" style="background: white; border-radius: 20px; padding: 1.5rem; text-align: center; border: 1px solid rgba(77,122,156,0.1);">
+    <!-- КУРС 1: Здоровая и красивая спина -->
+    <div class="course-card">
         <h3 style="font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem;">Здоровая и красивая спина</h3>
-        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">999₽</div>
+        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Комплекс упражнений для укрепления спины и осанки</p>
-        <a href="https://yoomoney.ru/pay/ССЫЛКА_СПИНА" target="_blank" class="button-outline" style="display: inline-block; width: auto; padding: 10px 24px;">Купить курс →</a>
+        
+        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+            <input name="customerNumber" type="hidden" value="Мини-курс Йога для здоровой и красивой спины">
+            <div class="ym-payment-btn-block">
+                <div class="ym-input-icon-rub ym-display-none">
+                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
+                </div>
+                <button data-text="Купить курс" class="ym-btn-pay ym-result-price">
+                    <span class="ym-text-crop">Купить курс</span>
+                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
+                </button>
+            </div>
+            <input name="shopId" type="hidden" value="1143889">
+        </form>
     </div>
     
-    <!-- КУРС 2 -->
-    <div class="course-card" style="background: white; border-radius: 20px; padding: 1.5rem; text-align: center; border: 1px solid rgba(77,122,156,0.1);">
+    <!-- КУРС 2: Йога от тревожности -->
+    <div class="course-card">
         <h3 style="font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem;">Йога от тревожности</h3>
-        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">999₽</div>
+        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Практики для успокоения ума и снятия напряжения</p>
-        <a href="https://yoomoney.ru/pay/ССЫЛКА_ТРЕВОЖНОСТЬ" target="_blank" class="button-outline" style="display: inline-block; width: auto; padding: 10px 24px;">Купить курс →</a>
+        
+        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+            <input name="customerNumber" type="hidden" value="Мини-курс Йога от тревожности">
+            <div class="ym-payment-btn-block">
+                <div class="ym-input-icon-rub ym-display-none">
+                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
+                </div>
+                <button data-text="Купить" class="ym-btn-pay ym-result-price">
+                    <span class="ym-text-crop">Купить</span>
+                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
+                </button>
+            </div>
+            <input name="shopId" type="hidden" value="1143889">
+        </form>
     </div>
     
-    <!-- КУРС 3 -->
-    <div class="course-card" style="background: white; border-radius: 20px; padding: 1.5rem; text-align: center; border: 1px solid rgba(77,122,156,0.1);">
+    <!-- КУРС 3: Плоский и рельефный живот -->
+    <div class="course-card">
         <h3 style="font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem;">Плоский и рельефный живот</h3>
-        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">999₽</div>
+        <div class="course-price" style="font-size: 1.8rem; font-weight: 500; color: #2c3e4e; margin: 0.5rem 0;">890₽</div>
         <p style="font-size: 0.9rem; margin: 0 0 1.2rem 0; color: #4d7a9c; line-height: 1.4;">Эффективные упражнения для мышц кора</p>
-        <a href="https://yoomoney.ru/pay/ССЫЛКА_ЖИВОТ" target="_blank" class="button-outline" style="display: inline-block; width: auto; padding: 10px 24px;">Купить курс →</a>
+        
+        <form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+            <input name="customerNumber" type="hidden" value="Мини курс Плоский и рельефный живот через йогу">
+            <div class="ym-payment-btn-block">
+                <div class="ym-input-icon-rub ym-display-none">
+                    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any" value="890">
+                </div>
+                <button data-text="Купить курс" class="ym-btn-pay ym-result-price">
+                    <span class="ym-text-crop">Купить курс</span>
+                    <span class="ym-price-output"> 890,00&nbsp;₽</span>
+                </button>
+            </div>
+            <input name="shopId" type="hidden" value="1143889">
+        </form>
     </div>
     
 </div>
