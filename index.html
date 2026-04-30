@@ -637,187 +637,135 @@
     </section>
 
    <!-- НОВЫЙ БЛОК: Мини-курсы (аккордеон) -->
-    <section id="minicourses" style="padding: 5rem 0; background-color: #eef4fa;">
-        <div class="container">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <div class="accordion-header" onclick="toggleCourses()">
-                    <h2 style="font-size: 2.2rem; font-weight: 350; color: #2c3e4e; margin: 0;">Если ты хочешь попробовать позаниматься самостоятельно</h2>
-                    <span id="arrowIcon" class="arrow-icon" style="font-size: 1.8rem;">▼</span>
-                </div>
-                <div id="coursesWrapper" class="courses-wrapper">
-                    <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
+<section id="minicourses" style="padding: 5rem 0; background-color: #eef4fa;">
+    <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <div class="accordion-header" onclick="toggleCourses()">
+                <h2 style="font-size: 2.2rem; font-weight: 350; color: #2c3e4e; margin: 0;">Если ты хочешь попробовать позаниматься самостоятельно</h2>
+                <span id="arrowIcon" class="arrow-icon" style="font-size: 1.8rem;">▼</span>
+            </div>
+            <div id="coursesWrapper" class="courses-wrapper">
+                <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
+                
+                <style>
+                    .courses-mini {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 1.5rem;
+                        margin-top: 2rem;
+                    }
+                    .card-mini {
+                        background: #fff;
+                        border-radius: 20px;
+                        padding: 1.5rem 1.2rem;
+                        text-align: center;
+                        border: 1px solid rgba(77,122,156,0.1);
+                        display: flex;
+                        flex-direction: column;
+                        transition: all 0.3s ease;
+                    }
+                    .card-mini:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 12px 28px rgba(77,122,156,0.1);
+                    }
+                    .card-mini h3 {
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        margin: 0 0 0.5rem 0;
+                        line-height: 1.3;
+                    }
+                    .card-mini .price-mini {
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        color: #2c3e4e;
+                        margin: 0.4rem 0;
+                    }
+                    .card-mini .desc-mini {
+                        font-size: 0.85rem;
+                        color: #4d7a9c;
+                        line-height: 1.4;
+                        flex-grow: 1;
+                        margin-bottom: 1rem;
+                    }
+                    .btn-kassa {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        background-color: #FF8C00;
+                        color: #fff;
+                        font-family: "Inter", system-ui, -apple-system, sans-serif;
+                        font-weight: 450;
+                        font-size: 0.95rem;
+                        padding: 12px 16px;
+                        border-radius: 40px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        width: 100%;
+                        text-decoration: none;
+                        line-height: 1.2;
+                        margin-top: auto;
+                        white-space: nowrap;
+                        border: none;
+                        box-sizing: border-box;
+                    }
+                    .btn-kassa:hover {
+                        background-color: #e67e00;
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 20px rgba(255,140,0,0.3);
+                        color: #fff;
+                    }
+                    @media (max-width: 768px) {
+                        .courses-mini {
+                            grid-template-columns: 1fr;
+                            max-width: 400px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                    }
+                </style>
+
+                <div class="courses-mini">
                     
-                  <!-- Подключаем стили и скрипт ЮKassa -->
-<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css?v=1.34.0">
-
-<style>
-    /* Исправляем стили кнопок ЮKassa, чтобы не ломались */
-    .ym-payment-btn-block {
-        margin-top: 0.5rem;
-    }
-    .ym-btn-pay {
-        background-color: #FF8C00 !important;
-        color: #fff !important;
-        font-family: "Inter", system-ui, -apple-system, sans-serif !important;
-        font-weight: 450 !important;
-        font-size: 1.1rem !important;
-        padding: 14px 32px !important;
-        border-radius: 40px !important;
-        border: none !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        line-height: 1.2 !important;
-        min-width: 200px !important;
-        justify-content: center !important;
-        text-decoration: none !important;
-    }
-    .ym-btn-pay:hover {
-        background-color: #e67e00 !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 20px rgba(255,140,0,0.3) !important;
-    }
-    .ym-logo {
-        display: none !important;
-    }
-    .ym-price-output {
-        font-weight: 450 !important;
-    }
-    .ym-text-crop {
-        font-weight: 450 !important;
-    }
-    .ym-input-icon-rub {
-        display: none !important;
-    }
-    
-    /* Адаптив для кнопок */
-    @media (max-width: 768px) {
-        .ym-btn-pay {
-            width: 100% !important;
-            min-width: auto !important;
-        }
-    }
-</style>
-
-<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css?v=1.34.0">
-
-<style>
-    .courses-grid-fix {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
-    .course-card-fix {
-        background: white;
-        border-radius: 20px;
-        padding: 1.3rem;
-        text-align: center;
-        border: 1px solid rgba(77,122,156,0.1);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-    .course-card-fix:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(77,122,156,0.1);
-    }
-    .course-title-fix {
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-        line-height: 1.3;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .course-desc-fix {
-        font-size: 0.85rem;
-        color: #4d7a9c;
-        line-height: 1.4;
-        flex-grow: 1;
-        margin-bottom: 0.8rem;
-        padding: 0 0.3rem;
-    }
-    .ym-link-fix {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 6px !important;
-        background-color: #FF8C00 !important;
-        color: #fff !important;
-        font-family: "Inter", system-ui, -apple-system, sans-serif !important;
-        font-weight: 450 !important;
-        font-size: 0.95rem !important;
-        padding: 12px 16px !important;
-        border-radius: 40px !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        text-decoration: none !important;
-        line-height: 1.2 !important;
-        margin-top: auto !important;
-        white-space: nowrap !important;
-        border: none !important;
-        box-sizing: border-box !important;
-    }
-    .ym-link-fix:hover {
-        background-color: #e67e00 !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 20px rgba(255,140,0,0.3) !important;
-        color: #fff !important;
-        text-decoration: none !important;
-    }
-    @media (max-width: 768px) {
-        .courses-grid-fix {
-            grid-template-columns: 1fr !important;
-            max-width: 400px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-    }
-</style>
-
-<div class="courses-grid-fix">
-    
-    <!-- КУРС 1 -->
-    <div class="course-card-fix">
-        <div class="course-title-fix">Здоровая и красивая спина</div>
-        <div style="font-size: 1.6rem; font-weight: 500; color: #2c3e4e; margin: 0.4rem 0;">890₽</div>
-        <p class="course-desc-fix">Комплекс упражнений для укрепления спины и осанки</p>
-        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога для здоровой и красивой спины" target="_blank" class="ym-link-fix">Купить курс 890,00&nbsp;₽</a>
-    </div>
-    
-    <!-- КУРС 2 -->
-    <div class="course-card-fix">
-        <div class="course-title-fix">Йога от тревожности</div>
-        <div style="font-size: 1.6rem; font-weight: 500; color: #2c3e4e; margin: 0.4rem 0;">890₽</div>
-        <p class="course-desc-fix">Практики для успокоения ума и снятия напряжения</p>
-        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога от тревожности" target="_blank" class="ym-link-fix">Купить 890,00&nbsp;₽</a>
-    </div>
-    
-    <!-- КУРС 3 -->
-    <div class="course-card-fix">
-        <div class="course-title-fix">Плоский и рельефный живот</div>
-        <div style="font-size: 1.6rem; font-weight: 500; color: #2c3e4e; margin: 0.4rem 0;">890₽</div>
-        <p class="course-desc-fix">Эффективные упражнения для мышц кора</p>
-        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини курс Плоский и рельефный живот через йогу" target="_blank" class="ym-link-fix">Купить курс 890,00&nbsp;₽</a>
-    </div>
-    
-</div>
-                    <div class="course-note" style="margin-top: 1rem; text-align: center; font-size: 0.8rem; color: #a0b8cc;">
-                        *Доступ к любому курсу сохраняется на 1 месяц
+                    <div class="card-mini">
+                        <h3>Здоровая и красивая спина</h3>
+                        <div class="price-mini">890₽</div>
+                        <p class="desc-mini">Комплекс упражнений для укрепления спины и осанки</p>
+                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога для здоровой и красивой спины', '_blank')" class="btn-kassa">
+                            Купить курс 890,00&nbsp;₽
+                        </button>
                     </div>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <p style="font-size: 0.9rem; color: #4d7a9c;">Если вы хотите всё сразу — можете приобрести подписку на йога-клуб, участникам клуба доступны эти курсы в любое время!</p>
+                    
+                    <div class="card-mini">
+                        <h3>Йога от тревожности</h3>
+                        <div class="price-mini">890₽</div>
+                        <p class="desc-mini">Практики для успокоения ума и снятия напряжения</p>
+                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини-курс Йога от тревожности', '_blank')" class="btn-kassa">
+                            Купить 890,00&nbsp;₽
+                        </button>
                     </div>
+                    
+                    <div class="card-mini">
+                        <h3>Плоский и рельефный живот</h3>
+                        <div class="price-mini">890₽</div>
+                        <p class="desc-mini">Эффективные упражнения для мышц кора</p>
+                        <button onclick="window.open('https://yookassa.ru/integration/simplepay/payment?shopId=1143889&sum=890&customerNumber=Мини курс Плоский и рельефный живот через йогу', '_blank')" class="btn-kassa">
+                            Купить курс 890,00&nbsp;₽
+                        </button>
+                    </div>
+                    
+                </div>
+                
+                <div class="course-note" style="margin-top: 1rem; text-align: center; font-size: 0.8rem; color: #a0b8cc;">
+                    *Доступ к любому курсу сохраняется на 1 месяц
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <p style="font-size: 0.9rem; color: #4d7a9c;">Если вы хотите всё сразу — можете приобрести подписку на йога-клуб, участникам клуба доступны эти курсы в любое время!</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ОТЗЫВЫ -->
     <section id="reviews" style="padding: 6rem 0; background-color: #f5f9ff;">
