@@ -728,30 +728,41 @@
         color: #fff !important;
         text-decoration: none !important;
     }
-    @media (max-width: 768px) {
-        .courses-mini {
-            grid-template-columns: 1fr;
-            max-width: 360px;
-            margin-left: auto;
-            margin-right: auto;
-            gap: 1.2rem;
-        }
-        .card-mini h3 {
-            height: auto;
-            min-height: 36px;
-        }
-        .card-mini .desc-mini {
-            height: auto;
-            min-height: 36px;
-        }
-        .card-mini .price-mini {
-            height: auto;
-        }
-        .btn-kassa {
-            height: auto;
-            padding: 14px 10px;
-        }
+   @media (max-width: 768px) {
+    .courses-mini {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1rem;
     }
+    .card-mini {
+        padding: 1.2rem 0.8rem;
+    }
+    .card-mini h3 {
+        height: auto;
+        min-height: 32px;
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+    }
+    .card-mini .desc-mini {
+        height: auto;
+        min-height: 32px;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        padding: 0;
+    }
+    .card-mini .price-mini {
+        height: auto;
+        font-size: 1.3rem;
+        margin: 0.2rem 0;
+    }
+    .btn-kassa {
+        height: auto;
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+}
 </style>
 
                 <div class="courses-mini">
