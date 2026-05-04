@@ -403,18 +403,124 @@
 <body>
 
 <main>
-    <!-- Навигация (добавлена вкладка Нутрициология) -->
-    <div class="container">
-        <div class="nav-menu">
-            <a href="#hero">Главная</a>
-            <a href="#club">Что ждёт в клубе</a>
-            <a href="#tariffs">Тарифы</a>
-            <a href="#nutrition">Нутрициология</a>
-            <a href="#minicourses">Мини-курсы</a>
-            <a href="#reviews">Отзывы</a>
-            <a href="#about">Обо мне</a>
-        </div>
+    <!-- НАВИГАЦИЯ (бургер-меню, закреплено сверху) -->
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(245, 249, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 12px 20px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-bottom: 1px solid rgba(77,122,156,0.1);
+        transition: all 0.3s ease;
+    }
+    .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #4d7a9c;
+        font-size: 0.9rem;
+        font-weight: 400;
+        transition: color 0.3s;
+    }
+    .nav-links a:hover {
+        color: #2c3e4e;
+    }
+    .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .burger span {
+        width: 26px;
+        height: 2px;
+        background: #4d7a9c;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    .burger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .burger.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    @media (max-width: 768px) {
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background: white;
+            flex-direction: column;
+            padding: 80px 30px 30px 30px;
+            gap: 1.5rem;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+        }
+        .nav-links.open {
+            right: 0;
+        }
+        .burger {
+            display: flex;
+        }
+        .navbar {
+            padding: 10px 16px;
+        }
+    }
+    body {
+    padding-top: 60px;
+}
+</style>
+
+<nav class="navbar">
+    <div class="nav-links" id="navLinks">
+        <a href="#hero" onclick="closeMenu()">Главная</a>
+        <a href="#club" onclick="closeMenu()">Что ждёт в клубе</a>
+        <a href="#tariffs" onclick="closeMenu()">Тарифы</a>
+        <a href="#nutrition" onclick="closeMenu()">Нутрициология</a>
+        <a href="#minicourses" onclick="closeMenu()">Мини-курсы</a>
+        <a href="#reviews" onclick="closeMenu()">Отзывы</a>
+        <a href="#about" onclick="closeMenu()">Обо мне</a>
     </div>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        const burger = document.getElementById('burger');
+        nav.classList.toggle('open');
+        burger.classList.toggle('open');
+    }
+    function closeMenu() {
+        const nav = document.getElementById('navLinks');
+        const burger = document.getElementById('burger');
+        nav.classList.remove('open');
+        burger.classList.remove('open');
+    }
+</script>
 
     <!-- ГЕРОЙ - ПЕРВЫЙ ЭКРАН -->
     <section id="hero" style="padding: 2rem 0 4rem 0;">
