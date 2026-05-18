@@ -760,7 +760,7 @@
                 <span id="arrowIcon" class="arrow-icon" style="font-size: 1.8rem;">▼</span>
             </div>
             <div id="coursesWrapper" class="courses-wrapper">
-                <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
+                <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem auto 0 auto; text-align: center; max-width: 600px;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
                 
                 <style>
                     .courses-mini {
@@ -863,40 +863,45 @@
                         text-decoration: none !important;
                     }
                     @media (max-width: 768px) {
-                        .courses-mini {
-                            grid-template-columns: 1fr;
-                            max-width: 340px;
-                            margin-left: auto;
-                            margin-right: auto;
-                            gap: 1rem;
-                        }
-                        .card-mini {
-                            padding: 1.2rem 0.8rem;
-                        }
-                        .card-mini h3 {
-                            height: auto;
-                            min-height: 32px;
-                            font-size: 1rem;
-                            margin-bottom: 0.2rem;
-                        }
-                        .card-mini .desc-mini {
-                            height: auto;
-                            min-height: 32px;
-                            font-size: 0.8rem;
-                            margin-bottom: 0.5rem;
-                            padding: 0;
-                        }
-                        .card-mini .price-mini {
-                            height: auto;
-                            font-size: 1.3rem;
-                            margin: 0.2rem 0;
-                        }
-                        .btn-kassa {
-                            height: auto;
-                            padding: 12px 8px;
-                            font-size: 0.85rem;
-                        }
-                    }
+    .courses-mini {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1rem;
+    }
+    .card-mini {
+        padding: 1rem 0.7rem;
+    }
+    .card-mini h3 {
+        height: auto;
+        min-height: 28px;
+        font-size: 0.95rem;
+        margin-bottom: 0.1rem;
+    }
+    .card-mini .desc-mini {
+        height: auto;
+        min-height: 28px;
+        font-size: 0.78rem;
+        margin-bottom: 0.4rem;
+        padding: 0;
+    }
+    .card-mini .price-mini {
+        height: auto;
+        font-size: 1.2rem;
+        margin: 0.1rem 0;
+    }
+    .input-telegram {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+    .btn-kassa {
+        height: auto;
+        padding: 10px 6px;
+        font-size: 0.8rem;
+    }
+}
                 </style>
 
                 <div class="courses-mini">
