@@ -763,122 +763,141 @@
                 <p style="font-size: 1rem; color: #4d7a9c; margin: 1rem 0 0 0;">Предлагаю тебе мини-курсы под самые актуальные запросы:</p>
                 
                 <style>
-    .courses-mini {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
-    .card-mini {
-        background: #fff;
-        border-radius: 20px;
-        padding: 1.5rem 1.2rem;
-        text-align: center;
-        border: 1px solid rgba(77,122,156,0.1);
-        display: flex;
-        flex-direction: column;
-        transition: all 0.3s ease;
-    }
-    .card-mini:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(77,122,156,0.1);
-    }
-    .card-mini h3 {
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin: 0 0 0.5rem 0;
-        line-height: 1.3;
-        color: #2c3e4e;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .card-mini .price-mini {
-        font-size: 1.6rem;
-        font-weight: 500;
-        color: #2c3e4e;
-        margin: 0.4rem 0;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .card-mini .desc-mini {
-        font-size: 0.85rem;
-        color: #4d7a9c;
-        line-height: 1.4;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 0.8rem;
-        padding: 0 0.2rem;
-    }
-    .btn-kassa {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        background-color: #FF8C00;
-        color: #fff !important;
-        font-family: "Inter", system-ui, -apple-system, sans-serif;
-        font-weight: 450;
-        font-size: 0.95rem;
-        padding: 12px 16px;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        text-decoration: none !important;
-        line-height: 1.2;
-        border: none;
-        box-sizing: border-box;
-        height: 48px;
-    }
-    .btn-kassa:hover {
-        background-color: #e67e00;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255,140,0,0.3);
-        color: #fff !important;
-        text-decoration: none !important;
-    }
-   @media (max-width: 768px) {
-    .courses-mini {
-        grid-template-columns: 1fr;
-        max-width: 340px;
-        margin-left: auto;
-        margin-right: auto;
-        gap: 1rem;
-    }
-    .card-mini {
-        padding: 1.2rem 0.8rem;
-    }
-    .card-mini h3 {
-        height: auto;
-        min-height: 32px;
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
-    }
-    .card-mini .desc-mini {
-        height: auto;
-        min-height: 32px;
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-        padding: 0;
-    }
-    .card-mini .price-mini {
-        height: auto;
-        font-size: 1.3rem;
-        margin: 0.2rem 0;
-    }
-    .btn-kassa {
-        height: auto;
-        padding: 12px 8px;
-        font-size: 0.85rem;
-    }
-}
-</style>
+                    .courses-mini {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 1.5rem;
+                        margin-top: 2rem;
+                    }
+                    .card-mini {
+                        background: #fff;
+                        border-radius: 20px;
+                        padding: 1.5rem 1.2rem;
+                        text-align: center;
+                        border: 1px solid rgba(77,122,156,0.1);
+                        display: flex;
+                        flex-direction: column;
+                        transition: all 0.3s ease;
+                    }
+                    .card-mini:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 12px 28px rgba(77,122,156,0.1);
+                    }
+                    .card-mini h3 {
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                        margin: 0 0 0.5rem 0;
+                        line-height: 1.3;
+                        color: #2c3e4e;
+                        height: 44px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .card-mini .price-mini {
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        color: #2c3e4e;
+                        margin: 0.4rem 0;
+                        height: 38px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .card-mini .desc-mini {
+                        font-size: 0.85rem;
+                        color: #4d7a9c;
+                        line-height: 1.4;
+                        height: 48px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 0.8rem;
+                        padding: 0 0.2rem;
+                    }
+                    .input-telegram {
+                        width: 100%;
+                        padding: 10px 14px;
+                        border: 1.5px solid #e0e0e0;
+                        border-radius: 12px;
+                        font-size: 0.9rem;
+                        font-family: "Inter", system-ui, -apple-system, sans-serif;
+                        margin-bottom: 10px;
+                        text-align: center;
+                        outline: none;
+                        transition: border-color 0.3s ease;
+                        box-sizing: border-box;
+                    }
+                    .input-telegram:focus {
+                        border-color: #4d7a9c;
+                    }
+                    .input-telegram::placeholder {
+                        color: #aaa;
+                    }
+                    .btn-kassa {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        background-color: #FF8C00;
+                        color: #fff !important;
+                        font-family: "Inter", system-ui, -apple-system, sans-serif;
+                        font-weight: 450;
+                        font-size: 0.95rem;
+                        padding: 12px 16px;
+                        border-radius: 40px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        width: 100%;
+                        text-decoration: none !important;
+                        line-height: 1.2;
+                        border: none;
+                        box-sizing: border-box;
+                        height: 48px;
+                    }
+                    .btn-kassa:hover {
+                        background-color: #e67e00;
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 20px rgba(255,140,0,0.3);
+                        color: #fff !important;
+                        text-decoration: none !important;
+                    }
+                    @media (max-width: 768px) {
+                        .courses-mini {
+                            grid-template-columns: 1fr;
+                            max-width: 340px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            gap: 1rem;
+                        }
+                        .card-mini {
+                            padding: 1.2rem 0.8rem;
+                        }
+                        .card-mini h3 {
+                            height: auto;
+                            min-height: 32px;
+                            font-size: 1rem;
+                            margin-bottom: 0.2rem;
+                        }
+                        .card-mini .desc-mini {
+                            height: auto;
+                            min-height: 32px;
+                            font-size: 0.8rem;
+                            margin-bottom: 0.5rem;
+                            padding: 0;
+                        }
+                        .card-mini .price-mini {
+                            height: auto;
+                            font-size: 1.3rem;
+                            margin: 0.2rem 0;
+                        }
+                        .btn-kassa {
+                            height: auto;
+                            padding: 12px 8px;
+                            font-size: 0.85rem;
+                        }
+                    }
+                </style>
 
                 <div class="courses-mini">
                     
@@ -887,7 +906,8 @@
                         <h3>Здоровая и красивая спина</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Комплекс упражнений для укрепления спины и осанки</p>
-                        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини-курс%20Йога%20для%20здоровой%20и%20красивой%20спины" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить курс 890,00&nbsp;₽</a>
+                        <input type="text" class="input-telegram" placeholder="Ваш Telegram" id="tg1" oninput="updateLink(1)">
+                        <a id="link1" href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини-курс%20Йога%20для%20здоровой%20и%20красивой%20спины" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить курс 890,00&nbsp;₽</a>
                     </div>
                     
                     <!-- КУРС 2 -->
@@ -895,7 +915,8 @@
                         <h3>Йога от тревожности</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Практики для успокоения ума и снятия напряжения</p>
-                        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини-курс%20Йога%20от%20тревожности" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить 890,00&nbsp;₽</a>
+                        <input type="text" class="input-telegram" placeholder="Ваш Telegram" id="tg2" oninput="updateLink(2)">
+                        <a id="link2" href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини-курс%20Йога%20от%20тревожности" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить 890,00&nbsp;₽</a>
                     </div>
                     
                     <!-- КУРС 3 -->
@@ -903,7 +924,8 @@
                         <h3>Плоский и рельефный живот</h3>
                         <div class="price-mini">890₽</div>
                         <p class="desc-mini">Эффективные упражнения для мышц кора</p>
-                        <a href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини%20курс%20Плоский%20и%20рельефный%20живот%20через%20йогу" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить курс 890,00&nbsp;₽</a>
+                        <input type="text" class="input-telegram" placeholder="Ваш Telegram" id="tg3" oninput="updateLink(3)">
+                        <a id="link3" href="https://yookassa.ru/integration/simplepay/payment?shopId=1327713&sum=890&customerNumber=Мини%20курс%20Плоский%20и%20рельефный%20живот%20через%20йогу" target="_blank" rel="noopener noreferrer" class="btn-kassa">Купить курс 890,00&nbsp;₽</a>
                     </div>
                     
                 </div>
@@ -916,6 +938,25 @@
         </div>
     </div>
 </section>
+
+<script>
+    function updateLink(num) {
+        const tg = document.getElementById('tg' + num).value.trim();
+        const link = document.getElementById('link' + num);
+        let base = link.href.split('&customerNumber=')[0];
+        let customer = '';
+        
+        if (num === 1) customer = 'Мини-курс%20Йога%20для%20здоровой%20и%20красивой%20спины';
+        if (num === 2) customer = 'Мини-курс%20Йога%20от%20тревожности';
+        if (num === 3) customer = 'Мини%20курс%20Плоский%20и%20рельефный%20живот%20через%20йогу';
+        
+        if (tg) {
+            link.href = base + '&customerNumber=' + customer + '%20TG:%20' + encodeURIComponent(tg);
+        } else {
+            link.href = base + '&customerNumber=' + customer;
+        }
+    }
+</script>
 
     <!-- ОТЗЫВЫ -->
     <section id="reviews" style="padding: 6rem 0; background-color: #f5f9ff;">
