@@ -1105,6 +1105,55 @@
         arrow.classList.toggle('rotated');
     }
 </script>
+<!-- Скрипт уведомлений в Telegram -->
+<script>
+(function() {
+    const BOT_TOKEN = '8993697722:AAEmzjeKCOQtgMnBw3l8SrFOWHpsEnX6vIo';
+    const CHAT_ID = '998342158';
 
+    function sendTelegramMsg(text) {
+        const url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage';
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: text,
+                parse_mode: 'HTML'
+            })
+        });
+    }
+
+    // Отслеживаем клик по кнопкам ЮKassa
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-kassa');
+        if (!btn) return;
+
+        // Ищем поле Telegram внутри той же карточки
+        const card = btn.closest('.card-mini');
+        if (!card) return;
+
+        const tgInput = card.querySelector('.input-telegram');
+        const courseTitle = card.querySelector('h3');
+        const courseName = courseTitle ? courseTitle.textContent.trim() : 'Мини-курс';
+
+        const tg = tgInput ? tgInput.value.trim() : '';
+
+        let msg = '💰 <b>Новая оплата!</b>\n';
+        msg += 'Курс: <b>' + courseName + '</b>\n';
+        msg += 'Сумма: 890₽\n';
+        if (tg) {
+            msg += 'Telegram: @' + tg.replace('@', '');
+        } else {
+            msg += 'Telegram: <i>не указан</i>';
+        }
+
+        // Отправляем с задержкой, чтобы форма успела открыться
+        setTimeout(function() {
+            sendTelegramMsg(msg);
+        }, 1000);
+    });
+})();
+</script>
 </body>
 </html>
